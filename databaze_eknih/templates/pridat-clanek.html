@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+    Vytvořit nový článek
+{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+    <h1>
+        Přidat nový článek
+    </h1>
+    <div class="form-group">
+        <form method="POST">
+            <!-- token je pro bezpečnost při posílání formuláře -->
+            {% csrf_token %}
+            <!-- vytvoří formulář jako <p>; form.as_ul vytvoří formulář jako <ul> -->
+            <!-- kolonky se modifikují v souboru forms.py, kde je jim udělena třída class="form-control" -->    
+            {{ form.as_p }}
+            <button class="btn btn-dark">Přidat</button>
+    </div>
+
+{% else %}
+    <h1>Přístup odepřen.</h1>
+
+{% endif %}
+    
+{% endblock %}

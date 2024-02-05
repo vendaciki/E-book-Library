@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>
+        Knižní databáze
+    </h1>
+    <h2>
+        Nejnovější články
+    </h2>
+    <ul>
+    {% for post in object_list %}
+    <li>
+        <a href="{% url 'detail-clanku' post.pk %}">{{ post.title }}</a> 
+        - {{ post.author }} - {{ post.post_date }}
+        <!-- pokud je uživatel přihlášen, ukaž odkaz na upravení a smazání -->
+        {% if user.is_authenticated %}
+            <small>
+                <a href="{% url 'upravit-clanek' post.pk %}">(Upravit)</a> 
+                <a href="{% url 'smazat-clanek' post.pk %}">(Smazat)</a>
+            </small> 
+            {% endif %}
+
+        <br />
+        <!-- slice:":400" = ukáže prvních 400 znaků z článku na indexu -->
+        {{ post.body|slice:":400"|safe }}</li>
+    {% endfor %}
+    </ul>   
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+    Smazat článek
+{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+    <h1>
+        Smazat článek
+    </h1>
+    <div class="form-group">
+        <form method="POST">
+            <!-- token je pro bezpečnost při posílání formuláře -->
+            {% csrf_token %}
+            <strong>Opravdu chceš článek smazat?</strong>
+            <br>
+            <button class="btn btn-dark">Smazat</button>
+    </div>
+
+{% else %}
+    <h1>Přístup odepřen.</h1>
+{% endif %}
+    
+{% endblock %}

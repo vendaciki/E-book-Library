@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Přehled knih
+{% endblock %}
+
+{% block content %}
+
+<h1>Přehled knih</h1>
+<ul>
+{% for book in object_list %}
+
+    <li>
+        <h2>{{ book.title }}</h2>
+    </li>
+
+
+{% endfor %}
+</ul>
+{% endblock%}
