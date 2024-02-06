@@ -7,6 +7,7 @@
 {% block content %}
 
 <h1>Přehled knih</h1>
+<a href="{% url 'pridat-knihu' %}"><button type="button" class="btn btn-dark">Přidat knihu</button></a>
 <ul>
 {% for book in object_list %}
 

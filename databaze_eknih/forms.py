@@ -13,6 +13,12 @@ class PostForm(forms.ModelForm):
             "body": forms.Textarea(attrs={"class": "form-control"}),
         }
 
+        labels = {
+            "title": "Název",
+            "author": "Autor",
+            "body": "Obsah",
+        }
+
 
 class UpdateForm(forms.ModelForm):
     class Meta:
