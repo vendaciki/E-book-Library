@@ -12,4 +12,7 @@ Výpis šložky, abys viděla, co je v ní, se dělá příkazem
 ```python -m venv env```. Aktivaci virtuálního prostředí provedeš příkazem ```env\Scripts\activate```.
 4. Pokud nejsi na stejné úrovni jako soubor manage.py, tak se tam přesuň. Naistaluješ si potřebné knihovny pro Python příkazem ```pip install -r requirements.txt```.
 5. No a teď by měl jít spustit web. V příkazové řádce prověď příkaz ```python manage.py runserver```.
-6. Ve webovém prohlížeči napiš adresu ```127.0.0.1.:8000``` a nebo ```localhost:8000```.
+6. Ve webovém prohlížeči napiš adresu ```127.0.0.1:8000``` a nebo ```localhost:8000```.
+
+
+```cd /d V:\``` změna disku
