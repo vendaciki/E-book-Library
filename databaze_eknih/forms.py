@@ -8,9 +8,9 @@ class PostForm(forms.ModelForm):
     
     # přidávám class, se kterou pracuji v CSS; stejně tak můžu přidat jakýkoliv jiný parametr
         widgets = {
-            "title": forms.TextInput(attrs={"class": "form-control"}),
-            "author": forms.Select(attrs={"class": "form-control"}),
-            "body": forms.Textarea(attrs={"class": "form-control"}),
+            "title": forms.TextInput(attrs={"class": "form-control shadow-sm"}),
+            "author": forms.Select(attrs={"class": "form-control shadow-sm"}),
+            "body": forms.Textarea(attrs={"class": "form-control shadow-sm"}),
         }
 
         labels = {
