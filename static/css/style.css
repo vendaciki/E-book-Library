@@ -7,3 +7,13 @@
 .logo {
     width: 50px;
 }
+
+
+
+.form-group {
+    width: 50%;
+}
+
+.bg-nav {
+    background-color: rgba(173, 216, 230, 0.5); /* Světle modrá s průhledností pro tlumený efekt */
+}
