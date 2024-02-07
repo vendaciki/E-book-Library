@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -6,14 +7,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Databáze knih">
-        <link rel="icon" type="image/x-icon" href="../../static/images/logo.png">
+        <link rel="icon" type="image/x-icon" href="{% static 'images/logo.png' %}">
 
-        <link rel="stylesheet" href="../../static/css/style.css">  
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">  
 
         <!-- pokud se title nevytvoří dynamicky, bude mít hodnotu MW Knižní databáze-->
         <title>
             {% block title %}
-            📚 MW Knižní databáze
+            MW Knižní databáze
             {% endblock %}
         </title>
 
@@ -38,18 +39,23 @@
                             <a class="nav-link" href="{% url "knihy" %}">Knihy</a>
                         </li>
                     </ul>
+                    <!-- Začíná podmínka: pokud je user přihlášen, zviditelni: -->
                     {% if user.is_authenticated %}
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url "pridat-clanek" %}">Přidat článek</a>
                         </li>
                     </ul>
-                    
+                    <!-- konec podmínky, další kód ukaž všem-->
+                    {% endif %}
+
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
 
+                    <!-- Začíná podmínka: pokud je user přihlášen, zviditelni: -->
+                    {% if user.is_authenticated %}
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <!-- bezpečnostní ověření při odhlášení, bez něj to nefunguje -->
@@ -59,6 +65,7 @@
                             </form>
                         </li>
                     </ul>
+                    <!-- pokud user není přihlášen, tak mu ukaž tohle: -->
                     {% else %}
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -67,6 +74,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url "registrace" %}">Registrace</a>
                         </li>
+                    <!-- konec podmínky -->
                     {% endif %}
                     </ul>
                 </div>
