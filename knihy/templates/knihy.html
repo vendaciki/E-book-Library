@@ -7,18 +7,22 @@
 {% block content %}
 
 <h1>Přehled knih</h1>
-<a href="{% url 'pridat-knihu' %}"><button type="button" class="btn btn-dark">Přidat knihu</button></a>
-<ul>
-{% for book in object_list %}
+<div class="pridat-btn">
+    <a href="{% url 'pridat-knihu' %}"><button type="button" class="btn btn-dark">Přidat knihu</button></a>
+    <a href="{% url 'pridat-autora' %}"><button type="button" class="btn btn-dark">Přidat autora</button></a>
+</div>
 
-    <li>
-        <a href="{% url 'detail-knihy' book.pk %}">
-            <h3>{{ book.title }} - {{ book.author }}</h3>
-        </a>
-        
-    </li>
+<div>
+    <ul style="margin-top: 40px; padding-left: 0">
+    {% for book in object_list %}
+        <li>
+            <a style="text-decoration: none;" href="{% url 'detail-knihy' book.pk %}">
+                <h4>{{ book.author }} - {{ book.title }}</h4>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 
 
-{% endfor %}
-</ul>
 {% endblock%}

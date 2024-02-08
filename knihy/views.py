@@ -1,8 +1,8 @@
 from typing import Any
 from django.db.models.query import QuerySet
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
-from .models import Book
-from .forms import PostBookForm
+from .models import Book, Author
+from .forms import PostBookForm, PostAuthorForm
 from django.urls import reverse_lazy
 
 
@@ -49,3 +49,11 @@ class SearchView(ListView):
         context = super().get_context_data(**kwargs)
         context['query'] = self.request.GET.get("q")
         return context
+
+
+class AddAuthorView(CreateView):
+    model = Author 
+    form_class = PostAuthorForm
+    template_name = "pridat-autora.html"
+
+    success_url = reverse_lazy("knihy")

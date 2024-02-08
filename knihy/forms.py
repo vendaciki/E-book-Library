@@ -1,5 +1,5 @@
 from django import forms
-from .models import Book
+from .models import Book, Author
 
 class PostBookForm(forms.ModelForm):
     class Meta:
@@ -25,4 +25,24 @@ class PostBookForm(forms.ModelForm):
             'ISBN': 'ISBN',
             'summary': 'Souhrn',
             'cover_image': 'Obrázek obalu',
+        }
+
+
+
+
+
+class PostAuthorForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields = "__all__"
+
+    # přidávám class, se kterou pracuji v CSS; stejně tak můžu přidat jakýkoliv jiný parametr
+        widgets = {
+                'first_name': forms.TextInput(attrs={'class': 'form-control shadow-sm'}),
+                'last_name': forms.TextInput(attrs={'class': 'form-control shadow-sm'}),
+            }
+        
+        labels = {
+            'first_name': 'Jméno',
+            'last_name': 'Příjmení',
         }

@@ -77,23 +77,49 @@ form .control {
     display: flex;
     flex-wrap: wrap;
     margin: 20px 20px 0 0;
-    height: 100%;
+    align-content: space-between;
 }
 
 .info-knih p {
     width: 100%;
 }
 
+.ms-auto {
+    margin-right: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pridat-btn {
+    margin-top: 20px;
+}
+
+h4 {
+    color: var(--bs-secondary-color);
+}
 
 
 
 
 
-    /* MOBIL */
+
+
+
+
+@media (min-width: 1200px) {
+
+    .fs-2 {
+    margin-left: 20px;
+    }
+}
+
+
 @media screen and (max-width: 700px) {
 
     .form-group {
         width: 100%;
     }
-
 }
