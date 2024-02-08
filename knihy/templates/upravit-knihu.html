@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Upravit knihu {{ book.title }}
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Upravit knihu {{ book.title }}</h1>
+
+<div class="form-group">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-dark">Uložit</button>
+    </form>
+</div>
+{% else %}
+<h1>Přístup odepřen.</h1>
+{% endif %}
+
+{% endblock %}

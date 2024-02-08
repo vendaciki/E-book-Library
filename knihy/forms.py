@@ -9,7 +9,7 @@ class PostBookForm(forms.ModelForm):
     # přidávám class, se kterou pracuji v CSS; stejně tak můžu přidat jakýkoliv jiný parametr
         widgets = {
                 'title': forms.TextInput(attrs={'class': 'form-control'}),
-                'author': forms.TextInput(attrs={'class': 'form-control'}),
+                'author': forms.Select(attrs={'class': 'form-control'}),
                 'genre': forms.Select(attrs={'class': 'form-control'}),
                 'publication_date': forms.DateInput(attrs={'class': 'form-control datepicker'}),
                 'ISBN': forms.TextInput(attrs={'class': 'form-control'}),
