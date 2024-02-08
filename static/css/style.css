@@ -7,15 +7,15 @@
 }
 
 .navbar {
-    background: linear-gradient(90deg, #4CAF50, #00BCD4);
+    background: #6253da;
 }
 
 .d-flex {
-    margin: auto;
+    margin: 0 30px;
 }
 
-.nav-item a:hover, form .nav-link:hover {
-    color: white;
+.nav-item a:hover, .text-light:hover {
+    color: rgb(255, 0, 0)!important;
 }
 
 .search {
@@ -54,7 +54,34 @@ form .control {
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
     
+.kniha {
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.kniha img {
+    margin: 20px 20px 0 0;
+    width: auto;
+    height: 250px;
+}
+
+.obsah-knih {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+
+.info-knih {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 20px 0 0;
+    height: 100%;
+}
+
+.info-knih p {
+    width: 100%;
+}
 
 
 

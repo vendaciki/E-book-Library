@@ -11,13 +11,22 @@
     <a href="{% url 'upravit-knihu' book.pk %}">Upravit knihu</a>
 {% endif %}
 
-{% if book.cover_image %}
-    <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
-  {% endif %}
-<p>Napsal: {{ book.author }}</p>
-<p>Žánr: {{ book.genre }}</p>
-<p>Rok vydání: {{ book.publication_date }}</p>
-<p>ISBN: {{book.ISBN }}</p>
-<p>Popis: <br> {{ book.summary|safe }}</p>
+<div class="kniha">
+    <div class="obsah-knih">
+        {% if book.cover_image %}
+            <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+        {% endif %}
+
+        <div class="info-knih">
+            <p>Napsal: {{ book.author }}</p>
+            <p>Žánr: {{ book.genre }}</p>
+            <p>Rok vydání: {{ book.publication_date }}</p>
+            <p>ISBN: {{book.ISBN }}</p>
+        </div>
+    </div>
+    <div>
+        <p><h5>Popis:</h5> {{ book.summary|safe }}</p>
+    </div>
+</div>
 
 {% endblock %}
