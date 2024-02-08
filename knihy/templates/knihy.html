@@ -24,5 +24,17 @@
     </ul>
 </div>
 
+<h1>Přehled autorů</h1>
+<div style="display: flex;">
+    <ul style="margin-top: 40px; padding-left: 0">
+    {% for author in authors %}
+        <li>
+            <a style="text-decoration: none;" href="{% url 'detail-autora' author.pk %}">
+                <h4 class="prehled-knih">{{ author.first_name }} {{ author.last_name }}</h4>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 
 {% endblock%}

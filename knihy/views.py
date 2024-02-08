@@ -11,6 +11,13 @@ class BooksView(ListView):
     template_name = "knihy.html"
     ordering = ["-id"]
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        authors = Author.objects.all()
+        context['authors'] = authors
+
+        return context
+
 
 class AddBookView(CreateView):
     model = Book
@@ -57,3 +64,8 @@ class AddAuthorView(CreateView):
     template_name = "pridat-autora.html"
 
     success_url = reverse_lazy("knihy")
+
+
+class AuthorDetailView(DetailView):
+    model = Author
+    template_name = "detail-autora.html"

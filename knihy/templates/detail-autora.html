@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ author.first_name }} {{ author.last_name }}
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ author.first_name }} {{ author.last_name }}</h1>
+
+<h2>Knihy</h2>
+<ul>
+    {% for book in author.book_set.all %}
+        <a href="{% url 'detail-knihy' book.pk %}"><li>{{ book.title }} ({{ book.publication_date }})</li></a>
+    {% empty %}
+        <p>Žádné knihy nejsou dostupné.</p>
+    {% endfor %}
+</ul>
+
+{% endblock %}
