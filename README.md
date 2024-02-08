@@ -19,3 +19,11 @@ Výpis šložky, abys viděla, co je v ní, se dělá příkazem
 
 ```ctr + c```  vypnout server a pak šipka hore
 
+# Práce s gitem
+## Poslat úpravy na github:
+```git add .```
+```git commit -m "komentář"```
+```git push origin master```
+
+## Stáhnout z githubu:
+```git pull origin master```
