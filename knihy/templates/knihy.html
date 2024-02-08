@@ -8,16 +8,16 @@
 
 <h1>Přehled knih</h1>
 <div class="pridat-btn">
-    <a href="{% url 'pridat-knihu' %}"><button type="button" class="btn btn-dark">Přidat knihu</button></a>
-    <a href="{% url 'pridat-autora' %}"><button type="button" class="btn btn-dark">Přidat autora</button></a>
+    <a href="{% url 'pridat-knihu' %}"><button type="button" class="btn btn-primary shadow-sm">Přidat knihu</button></a>
+    <a href="{% url 'pridat-autora' %}"><button type="button" class="btn btn-primary">Přidat autora</button></a>
 </div>
 
-<div>
+<div style="display: flex;">
     <ul style="margin-top: 40px; padding-left: 0">
     {% for book in object_list %}
         <li>
             <a style="text-decoration: none;" href="{% url 'detail-knihy' book.pk %}">
-                <h4>{{ book.author }} - {{ book.title }}</h4>
+                <h4 class="prehled-knih">{{ book.author }} - {{ book.title }}</h4>
             </a>
         </li>
         {% endfor %}

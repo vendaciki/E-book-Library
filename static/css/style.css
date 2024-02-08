@@ -14,7 +14,7 @@
     margin: 0 30px;
 }
 
-.nav-item a:hover, .text-light:hover {
+.nav-item a:hover, .text-light:hover, .prehled-knih:hover {
     color: rgb(255, 0, 0)!important;
 }
 
@@ -97,7 +97,7 @@ ul {
     margin-top: 20px;
 }
 
-h4 {
+.kniha {
     color: var(--bs-secondary-color);
 }
 
