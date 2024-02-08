@@ -34,7 +34,14 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                     <ul class="navbar-nav mb-lg-0">
+                        <li class="nav-item">
+                            <form class="d-flex" role="search" action="{% url 'vysledky-hledani' %}" method="get">
+                                <input class="control" type="type" placeholder="Hledat knihu" aria-label="Search" name="q">
+                                <button class="search" type="submit">Hledat</button>
+                            </form>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url "knihy" %}">Knihy</a>
                         </li>
@@ -50,10 +57,7 @@
                     <!-- konec podmínky, další kód ukaž všem-->
                     {% endif %}
 
-                    <form class="d-flex" role="search">
-                        <input class="control" type="search" placeholder="Search" aria-label="Search">
-                        <button class="search" type="submit">Search</button>
-                    </form>
+
 
                     <!-- Začíná podmínka: pokud je user přihlášen, zviditelni: -->
                     {% if user.is_authenticated %}
