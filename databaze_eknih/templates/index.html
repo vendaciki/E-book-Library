@@ -5,10 +5,10 @@
     <h1>
         Knižní databáze
     </h1>
-    <h2>
+    <h2 class="margin-top: 20px;">
         Nejnovější články
     </h2>
-    <ul>
+    <ul class="articles">
     {% for post in object_list %}
     <li>
         <a href="{% url 'detail-clanku' post.pk %}">{{ post.title }}</a> 

@@ -7,18 +7,21 @@
 <!-- vkládá obsah tohoto html souboru do base.html do části "block content"-->
 {% block content %}
 
-<h1>
-    {{ post.title }}
-</h1>
-<small>By: {{ post.author }} - {{ post.post_date }}
-    {% if user.is_authenticated %}
-    <a href="{% url 'upravit-clanek' post.pk %}">(Upravit)</a>
-    <a href="{% url 'smazat-clanek' post.pk %}">(Smazat)</a>
-    {% endif %}
-</small>
-<hr>
-<p>{{ post.body|safe }}</p>
-<br/>
-<a href="{% url 'home' %}"class="btn btn-dark">Zpět</a>
+<div>
+    <h1>
+        {{ post.title }}
+    </h1>
+    <div class="article-detail">
+        <small>By: {{ post.author }} - {{ post.post_date }}
+            {% if user.is_authenticated %}
+            <a href="{% url 'upravit-clanek' post.pk %}">(Upravit)</a>
+            <a href="{% url 'smazat-clanek' post.pk %}">(Smazat)</a>
+            {% endif %}
+        </small>
+        <hr>
+        <p>{{ post.body|safe }}</p>
+    </div>
 
+    <a href="{% url 'home' %}"class="btn btn-primary">Zpět</a>
+</div>
 {% endblock %}

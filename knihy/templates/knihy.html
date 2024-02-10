@@ -6,35 +6,49 @@
 
 {% block content %}
 
-<h1>Přehled knih</h1>
-<div class="pridat-btn">
-    <a href="{% url 'pridat-knihu' %}"><button type="button" class="btn btn-primary shadow-sm">Přidat knihu</button></a>
-    <a href="{% url 'pridat-autora' %}"><button type="button" class="btn btn-primary">Přidat autora</button></a>
+
+<div class="books">
+    <h1>Přehled nových knih</h1>
+
+    <div class="new-books">
+        <ul>
+        {% for book in object_list %}
+            <li class="ten-books">
+                <a href="{% url 'detail-knihy' book.pk %}">
+                    <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+                </a>
+                <p style="margin-top: 20px;" class="prehled-knih fs-6 fw-medium"> {{ book.author }} <br> {{ book.title }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 
-<div style="display: flex;">
-    <ul style="margin-top: 40px; padding-left: 0">
-    {% for book in object_list %}
-        <li>
-            <a style="text-decoration: none;" href="{% url 'detail-knihy' book.pk %}">
-                <h4 class="prehled-knih">{{ book.author }} - {{ book.title }}</h4>
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-
-<h1>Přehled autorů</h1>
-<div style="display: flex;">
-    <ul style="margin-top: 40px; padding-left: 0">
-    {% for author in authors %}
-        <li>
-            <a style="text-decoration: none;" href="{% url 'detail-autora' author.pk %}">
-                <h4 class="prehled-knih">{{ author.first_name }} {{ author.last_name }}</h4>
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
+<section>
+    <div class="authors">
+        <h1>Přehled autorů</h1>
+        <div class="new-author">
+            <ul>
+            {% for author in authors %}
+                <li class="ten-authors">
+                    <a href="{% url 'detail-autora' author.pk %}">
+                        <p class="prehled-knih fs-6 fw-medium">{{ author.first_name }} {{ author.last_name }}</p>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="pridat-btn">
+        <div class="add-img">
+            <img src="../../static/images/book.webp">
+            <a href="{% url 'pridat-knihu' %}"><button type="button" class="btn btn-primary shadow-sm">Přidat knihu</button></a>
+        </div>
+        <div class="add-img">
+            <img src="../../static/images/author.webp">
+            <a href="{% url 'pridat-autora' %}"><button type="button" class="btn btn-primary">Přidat autora</button></a>
+        </div>
+    </div>
+</section>
 
 {% endblock%}

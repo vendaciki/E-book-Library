@@ -11,7 +11,7 @@ Přidat autora
     <form method="post" action="{% url 'pridat-autora' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-dark">Přidat</button>
+        <button type="submit" class="btn btn-primary">Přidat</button>
     </form>
 </div>
 

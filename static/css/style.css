@@ -1,8 +1,18 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
 .logo {
     width: 50px;
 }
 
 .form-group {
+    width: 100%;
+}
+
+form {
     width: 50%;
 }
 
@@ -12,10 +22,11 @@
 
 .d-flex {
     margin: 0 30px;
+    width: auto;
 }
 
-.nav-item a:hover, .text-light:hover, .prehled-knih:hover {
-    color: rgb(255, 0, 0)!important;
+.nav-item a:hover, .text-light:hover {
+    color: rgb(233, 30, 99)!important;
 }
 
 .search {
@@ -54,6 +65,27 @@ form .control {
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
     
+.articles {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.articles li {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.article-detail {
+    box-shadow: 0px 0px 5px grey;
+    padding: 15px;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+small {
+    width: 100%;
+}
+
 .kniha {
     display: flex;
     flex-wrap: wrap;
@@ -70,7 +102,6 @@ form .control {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    height: 100%;
 }
 
 .info-knih {
@@ -84,6 +115,12 @@ form .control {
     width: 100%;
 }
 
+.name-book {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
 .ms-auto {
     margin-right: 20px;
 }
@@ -94,6 +131,10 @@ ul {
 }
 
 .pridat-btn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
     margin-top: 20px;
 }
 
@@ -101,7 +142,116 @@ ul {
     color: var(--bs-secondary-color);
 }
 
+.prehled-knih {
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    text-align: center;
+    color: black;
+    cursor: default;
+}
 
+h2 {
+    width: 100%;
+}
+
+h1::after {
+    content: "";
+    display: block;
+    height: 3px;
+    background: #6253da;
+    margin-left: -15px;
+}
+
+.new-books ul, .new-author ul {
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.ten-books a, .ten-authors a {
+    text-decoration: none;
+}
+
+.new-books {
+    display: flex; 
+    margin-top: 20px;
+    background-image: url(../images/police.webp);
+    background-size: 100% 100%;
+}
+
+.ten-books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 200px;
+    flex: 20%;
+}
+
+.ten-books img {
+    width: auto;
+    height: 150px;
+    box-shadow: 3px 3px 10px 0px grey;
+}
+
+.authors, .books {
+    box-shadow: 0px 0px 5px 0px #6253da;
+    padding: 15px;
+}
+
+.new-author, .ten-authors {
+    width: 100%;
+}
+
+.books, section {
+    height: 100%;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+}
+
+.authors {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0 10px 10px 0;
+    border: 1px solid #9387f5;
+}
+
+.new-author {
+    display: flex;
+    margin-top: 20px;
+}
+
+.ten-authors {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.books {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    border-radius: 10px 0 0 10px;
+    border: 1px solid #9387f5;
+}
+
+.add-img {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.add-img img {
+    width: 80px;
+}
+
+.add-img a {
+    margin: auto 10px;
+}
 
 
 
@@ -119,7 +269,21 @@ ul {
 
 @media screen and (max-width: 700px) {
 
-    .form-group {
+    .form {
         width: 100%;
     }
+
+    .books, section {
+        width: 100%;
+    }
+
+    .ten-books {
+        flex: 50%;
+    }
+
+    .new-books {
+        background-image: none;
+    }
+
+
 }

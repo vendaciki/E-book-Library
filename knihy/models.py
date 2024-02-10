@@ -22,7 +22,7 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, null=True, blank=True)
     publication_date = models.CharField(max_length=4)
-    ISBN = models.CharField(max_length=13, unique=True)
+    ISBN = models.CharField(max_length=17, unique=True)
     summary = models.TextField()
     cover_image = models.ImageField(upload_to="book_covers/", null=True, blank=True)
     

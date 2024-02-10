@@ -17,7 +17,7 @@ Výpis šložky, abys viděla, co je v ní, se dělá příkazem
 
 ```cd /d V:\``` změna disku
 
-```ctr + c```  vypnout server a pak šipka hore
+```ctr + c```  vypnout server a pak shift + šipka hore
 
 # Práce s gitem
 ## Poslat úpravy na github:
