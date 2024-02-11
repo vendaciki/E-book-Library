@@ -18,6 +18,10 @@ class BooksView(ListView):
 
         return context
 
+    def get_success_url(self):
+            # Dynamically generate the success URL using self.object.id
+            return reverse_lazy("detail-knihy", kwargs={'pk': self.object.id})
+        # success_url = reverse_lazy("knihy")
 
 class AddBookView(CreateView):
     model = Book
@@ -35,10 +39,10 @@ class UpdateBookDetail(UpdateView):
     form_class = PostBookForm
     template_name = "upravit-knihu.html"
 
-    def get_success_url(self):
-        # Dynamically generate the success URL using self.object.id
-        return reverse_lazy("detail-knihy", kwargs={'pk': self.object.id})
-    # success_url = reverse_lazy("knihy")
+    # def get_success_url(self):
+    #     # Dynamically generate the success URL using self.object.id
+    #     return reverse_lazy("detail-knihy", kwargs={'pk': self.object.id})
+    # # success_url = reverse_lazy("knihy")
 
 
 class SearchView(ListView):

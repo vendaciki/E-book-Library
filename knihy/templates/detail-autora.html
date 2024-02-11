@@ -6,15 +6,23 @@
 
 {% block content %}
 
-<h1>{{ author.first_name }} {{ author.last_name }}</h1>
 
-<h2>Knihy</h2>
-<ul>
-    {% for book in author.book_set.all %}
-        <a href="{% url 'detail-knihy' book.pk %}"><li>{{ book.title }} ({{ book.publication_date }})</li></a>
-    {% empty %}
-        <p>Žádné knihy nejsou dostupné.</p>
-    {% endfor %}
-</ul>
+<h1>{{ author.first_name }} {{ author.last_name }}</h1>
+<h2 style="margin-top: 20px;">Knihy</h2>
+<div class="new-books">
+    <ul class="author-books-list">
+        {% for book in author.book_set.all %}
+        <li class="author-books">
+            <a href="{% url 'detail-knihy' book.pk %}">
+                <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+            </a>
+            <p style="margin-top: 20px;" class="prehled-knih fs-6 fw-medium"> {{ book.title }} <br> ({{ book.publication_date }})</p>
+        </li>
+        {% empty %}
+            <p>Žádné knihy nejsou dostupné.</p>
+        {% endfor %}
+    </ul>
+</div>
+
 
 {% endblock %}

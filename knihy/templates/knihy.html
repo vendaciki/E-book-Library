@@ -10,14 +10,14 @@
 <div class="books">
     <h1>Přehled nových knih</h1>
 
-    <div class="new-books">
-        <ul>
-        {% for book in object_list %}
+    <div class="new-books police">
+        <ul style="justify-content: space-around;">
+            {% for book in object_list %}
             <li class="ten-books">
                 <a href="{% url 'detail-knihy' book.pk %}">
                     <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
                 </a>
-                <p style="margin-top: 20px;" class="prehled-knih fs-6 fw-medium"> {{ book.author }} <br> {{ book.title }}</p>
+                <p class="prehled-knih fs-6 fw-medium"> {{ book.author }} <br> {{ book.title }}</p>
             </li>
             {% endfor %}
         </ul>

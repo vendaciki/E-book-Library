@@ -1,7 +1,9 @@
 .container {
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     margin-bottom: 50px;
+    min-height: 100vh;
 }
 
 .logo {
@@ -10,6 +12,7 @@
 
 .form-group {
     width: 100%;
+    margin-top: 30px;
 }
 
 form {
@@ -143,7 +146,10 @@ ul {
 }
 
 .prehled-knih {
-    display: flex;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
     justify-content: center;
     align-content: flex-start;
     flex-wrap: wrap;
@@ -164,22 +170,32 @@ h1::after {
     margin-left: -15px;
 }
 
-.new-books ul, .new-author ul {
+.new-books ul, .new-author ul, .author-books ul {
     padding-left: 0;
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
 }
 
 .ten-books a, .ten-authors a {
     text-decoration: none;
 }
 
+.author-books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 0 0 calc(16.666% - 10px);
+    margin: 5px;
+}
+
 .new-books {
     display: flex; 
     margin-top: 20px;
+}
+
+.police {
     background-image: url(../images/police.webp);
-    background-size: 100% 100%;
+    background-size: 100%;
 }
 
 .ten-books {
@@ -187,13 +203,22 @@ h1::after {
     flex-wrap: wrap;
     justify-content: center;
     width: 200px;
-    flex: 20%;
+    flex: 0 0 calc(20% - 10px);
+    margin-bottom: 25px;
 }
 
-.ten-books img {
-    width: auto;
+.ten-books p {
+    margin-top: 10px;
+}
+
+.ten-books img, .author-books img {
+    max-width: 100%;
     height: 150px;
-    box-shadow: 3px 3px 10px 0px grey;
+    box-shadow: 3px 3px 10px 0px #171717;
+}
+
+.author-books img {
+    margin: 0 50px;
 }
 
 .authors, .books {
@@ -257,7 +282,106 @@ section {
 
 
 
+/***************************************/
+/*                FOOTER               */
+/***************************************/
 
+footer {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    background-color: #f5f6f7;
+    z-index: 10;
+    position: relative;
+}
+
+#footer .copyright {
+    color: #9fa3a6;
+    font-size: 15px; 
+    margin: auto 20px;
+    left: 50%;
+    position: relative;
+}
+
+
+
+
+/***************************************/
+/*           SOCIÁLNÍ SÍTĚ             */
+/***************************************/
+
+.fab {
+    font-family: "Font Awesome 5 Brands"
+}
+
+.fa {
+    font-family: "Font Awesome 5 Free"
+}
+
+.fab, .fa {
+    margin: 0 20px;
+    font-size: 25px;
+    color: #000000;
+    font-weight: 900;
+    font-style: normal;
+    display: inline-block; 
+}
+
+.fab:hover, .fa:hover {
+    color: #f56a6a; 
+}
+
+.fa-facebook-f:before {
+    content: "\f39e"
+}
+
+.fa-instagram:before {
+    content: "\f16d"
+}
+
+.fa-envelope:before {
+    content: "\f0e0"
+}
+
+@font-face {
+    font-family: "Font Awesome 5 Brands";
+    src: url(../webfonts/fa-brands-400.eot);
+    src: url(../webfonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),
+    url(../webfonts/fa-brands-400.woff2) format("woff2"),
+    url(../webfonts/fa-brands-400.woff) format("woff"),
+    url(../webfonts/fa-brands-400.ttf) format("truetype"),
+    url(../webfonts/fa-brands-400.svg#fontawesome) format("svg")}
+
+@font-face {
+    font-family: "Font Awesome 5 Free";
+    src: url(../webfonts/fa-regular-400.eot);
+    src: url(../webfonts/fa-regular-400.eot?#iefix) format("embedded-opentype"),
+    url(../webfonts/fa-regular-400.woff2) format("woff2"),
+    url(../webfonts/fa-regular-400.woff) format("woff"),
+    url(../webfonts/fa-regular-400.ttf) format("truetype"),
+    url(../webfonts/fa-regular-400.svg#fontawesome) format("svg")}
+
+@font-face {
+    font-family: "Font Awesome 5 Free";
+    src: url(../webfonts/fa-solid-900.eot);
+    src: url(../webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),
+    url(../webfonts/fa-solid-900.woff2) format("woff2"),
+    url(../webfonts/fa-solid-900.woff) format("woff"),
+    url(../webfonts/fa-solid-900.ttf) format("truetype"),
+    url(../webfonts/fa-solid-900.svg#fontawesome) format("svg")}
+
+
+
+
+
+
+
+@media (max-width: 1400px) {
+
+    .author-books img {
+        margin: 0px 20px;
+    }
+}
 
 @media (min-width: 1200px) {
 
@@ -266,10 +390,39 @@ section {
     }
 }
 
+@media screen and (max-width: 800px) {
+
+    .author-books {
+        flex: 0 0 calc(20% - 10px);
+    }
+}
 
 @media screen and (max-width: 700px) {
 
-    .form {
+    .author-books {
+        flex: 0 0 calc(25% - 10px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .author-books {
+        flex: 0 0 calc(30% - 10px);
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .author-books {
+        flex: 0 0 calc(50% - 10px);
+    }
+}
+
+
+
+@media screen and (max-width: 700px) {
+
+    form {
         width: 100%;
     }
 
@@ -285,5 +438,23 @@ section {
         background-image: none;
     }
 
+    .fab, .fa {
+        margin: 10px;
+        font-size: 20px;
+    }
+
+    #footer .copyright {
+        left: 0;
+    }
+
+
+
+
+
+
+
 
 }
+
+
+
