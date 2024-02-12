@@ -69,13 +69,27 @@ form .control {
 }
     
 .articles {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 0;
+    grid-gap: 10px;
 }
 
 .articles li {
-    margin: 10px 0;
     width: 100%;
+    border: 1px solid #9387f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #6253da;
+}
+
+.who-articles {
+    display: flex;
+    justify-content: space-between;
+}
+
+.who-articles a {
+    font-size: 12px;
 }
 
 .article-detail {
@@ -261,7 +275,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     width: 70%;
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px 0 10px 10px;
     border: 1px solid #9387f5;
 }
 
@@ -447,7 +461,9 @@ footer {
         left: 0;
     }
 
-
+    .articles {
+        grid-template-columns: 1fr;
+    }
 
 
 

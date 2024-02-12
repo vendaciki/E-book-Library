@@ -8,23 +8,29 @@
     <h2 style="margin-top: 20px;">
         Nejnovější články
     </h2>
-    <ul class="articles">
-    {% for post in object_list %}
-    <li>
-        <a href="{% url 'detail-clanku' post.pk %}">{{ post.title }}</a> 
-        - {{ post.author }} - {{ post.post_date }}
-        <!-- pokud je uživatel přihlášen, ukaž odkaz na upravení a smazání -->
-        {% if user.is_authenticated %}
-            <small>
-                <a href="{% url 'upravit-clanek' post.pk %}">(Upravit)</a> 
-                <a href="{% url 'smazat-clanek' post.pk %}">(Smazat)</a>
-            </small> 
-            {% endif %}
-
-        <br />
-        <!-- slice:":400" = ukáže prvních 400 znaků z článku na indexu -->
-        {{ post.body|slice:":400"|safe }}</li>
+    <ul class="articles" style="margin-top: 20px;">
+        {% for post in object_list %}
+        <li>
+            <a class="fs-5" href="{% url 'detail-clanku' post.pk %}">{{ post.title }}</a> 
+            <div class="who-articles">
+                {{ post.author }} - {{ post.post_date }}
+                
+                <!-- pokud je uživatel přihlášen, ukaž odkaz na upravení a smazání -->
+                {% if user.is_authenticated %}
+                <div>
+                    <a href="{% url 'upravit-clanek' post.pk %}">(Upravit)</a> 
+                    <a href="{% url 'smazat-clanek' post.pk %}">(Smazat)</a>
+                </div> 
+                {% endif %}
+            </div>
+            <hr>
+            <!-- slice:":400" = ukáže prvních 400 znaků z článku na indexu -->
+            {{ post.body|slice:":400"|safe }}
+        </li>
     {% endfor %}
     </ul>   
 
 {% endblock %}
+
+
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
