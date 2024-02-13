@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+Seznam všech autorů
+{% endblock %}
+
+{% block content %}
+<h1>Seznam všech autorů podle abecedy</h1>
+
+<ul>
+{% for author in all_authors %}
+    <li>
+        <a href="{% url 'detail-autora' author.pk %}">
+            <p>{{ author.first_name }} {{ author.last_name }}</p>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}

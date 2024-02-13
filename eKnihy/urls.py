@@ -22,10 +22,10 @@ from django.conf.urls.static import static
 # django.contrib.auth.urls obsahuje defaultní nastavení pro login a logout, takže se nemusí uvádět ve views.py
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('databaze_eknih.urls')),
+    path('clanky/', include('databaze_eknih.urls')),
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
-    path('knihy/', include('knihy.urls')),
+    path('', include('knihy.urls')),
 ]
 # pro čtení media souborů
 if settings.DEBUG:

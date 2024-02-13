@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     Přehled knih
@@ -15,13 +16,18 @@
             {% for book in object_list %}
             <li class="ten-books">
                 <a href="{% url 'detail-knihy' book.pk %}">
+                    {% if book.cover_image %}
                     <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+                    {% else %}
+                    <img src="{% static 'images/empty_cover.jpg' %}" alt="Prázdný obal">
+                    {% endif %}
                 </a>
                 <p class="prehled-knih fs-6 fw-medium"> {{ book.author }} <br> {{ book.title }}</p>
             </li>
             {% endfor %}
         </ul>
     </div>
+    <a href="{% url 'vsechny-knihy' %}"><button type="button" class="btn btn-primary shadow-sm">Více knih</button></a>
 </div>
 
 <section>
@@ -38,6 +44,7 @@
                 {% endfor %}
             </ul>
         </div>
+        <a href="{% url 'vsichni-autori' %}"><button type="button" class="btn btn-primary shadow-sm">Více autorů</button></a>
     </div>
     <div class="pridat-btn">
         <div class="add-img">
@@ -50,5 +57,18 @@
         </div>
     </div>
 </section>
+
+<div class="books text-center">
+    <h1>Seznam žánrů</h1>
+    <br>
+    <ul class="list-group list-group-horizontal" style="flex-wrap: wrap;">
+        {% for genre in genres %}
+        <li class="list-group-item">
+            <a href="{% url 'zanr' genre.pk %}">{{ genre }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
 
 {% endblock%}

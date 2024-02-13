@@ -10,7 +10,8 @@
 <ul>
     {% for book in object_list %}
     <li>
-        {{ book.title }}
+        <a href="{% url 'detail-knihy' book.pk %}"> {{ book.title }} </a>
+        
     </li>
 </ul>
     {% endfor %}
