@@ -21,7 +21,7 @@
                     <img src="{% static 'images/empty_cover.webp' %}" style="border-radius: 15px 0 0 15px;" alt="Prázdný obal">
                     {% endif %}
                 </a>
-                <p style="width:100%" class="prehled-knih fs-6 fw-medium"> {{ book.author }} <br> {{ book.title }}</p>
+                <p style="width:100%" class="prehled-knih fw-medium"> {{ book.author }} <br> {{ book.title }}</p>
             </li>
             {% endfor %}
         </ul>
@@ -29,7 +29,7 @@
     <a href="{% url 'vsechny-knihy' %}"><button type="button" class="btn btn-primary shadow-sm">Více knih</button></a>
 </div>
 
-<section>
+<div class="autori">
     <div class="authors">
         <h1>Přehled autorů</h1>
         <div class="new-author">
@@ -54,7 +54,7 @@
             <a href="{% url 'pridat-autora' %}"><button type="button" class="btn btn-primary">Přidat autora</button></a>
         </div>
     </div>
-</section>
+</div>
 
 <div class="genre">
     <h1>Seznam žánrů</h1>
