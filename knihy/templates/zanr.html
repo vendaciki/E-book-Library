@@ -7,12 +7,16 @@
 {% block content %}
 
 <h1>Žánr {{ genre.genre }}</h1>
-<div>
-{% for book in books %}
-    <ul>
-        <li>{{ book.author }} - {{ book.title }}</li>
+<div style="width: 100%;">
+    <ul class="zanr">
+        {% for book in books %}
+        <li>{{ book.title }} - {{ book.author }}
+            {% comment %} <a>
+            </a> {% endcomment %}
+        </li>
+        {% endfor %}
     </ul>
-    {% endfor %}
+    
 </div>
 
 {% endblock %}

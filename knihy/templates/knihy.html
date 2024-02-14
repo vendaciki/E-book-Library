@@ -10,7 +10,6 @@
 
 <div class="books">
     <h1>Přehled nových knih</h1>
-
     <div class="new-books police">
         <ul style="justify-content: space-around;">
             {% for book in object_list %}
@@ -60,7 +59,7 @@
 <div class="genre">
     <h1>Seznam žánrů</h1>
     <div style="margin: 30px auto 0;">
-        <ul style="padding-left:0">
+        <ul style="padding-left:0;">
             {% for genre in genres %}
             <li>
                 <a href="{% url 'zanr' genre.pk %}">{{ genre }}</a>

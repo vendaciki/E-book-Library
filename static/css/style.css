@@ -195,7 +195,7 @@ h1::after {
     text-decoration: none;
 }
 
-.new-books, .all-books {
+.new-books, .all-books, .zanr {
     display: flex; 
     margin: 30px auto 0;
 }
@@ -325,6 +325,13 @@ section {
 .genre a {
     color: black;
     font-weight: bold;
+}
+
+.zanr {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-left: 0; 
+    margin-bottom: 0;
 }
 
 .add-img {
