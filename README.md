@@ -15,6 +15,8 @@ Výpis šložky, abys viděla, co je v ní, se dělá příkazem
 6. Ve webovém prohlížeči napiš adresu ```127.0.0.1:8000``` a nebo ```localhost:8000```.
 
 
+```python.exe -m pip install --upgrade pip``` upgrade pythonu
+
 ```cd /d V:\``` změna disku
 
 ```ctr + c```  vypnout server a pak shift + šipka hore
