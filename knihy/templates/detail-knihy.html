@@ -19,7 +19,7 @@
         {% if book.cover_image %}
             <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
         {% else %}
-        <img src="{% static 'images/empty_cover.jpg' %}" alt="Prázdný obal">
+        <img src="{% static 'images/empty_cover.webp' %}" style="border-radius: 15px 0 0 15px;" alt="Prázdný obal">
         {% endif %}
 
         <div class="info-knih">

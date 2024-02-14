@@ -8,18 +8,18 @@ Seznam všech knih
 {% block content %}
 <h1>Seznam všech knih podle abecedy</h1>
 
-<div class="new-books police">
-    <ul style="justify-content: space-around;">
+<div class="all-books police2">
+    <ul>
         {% for book in object_list %}
-        <li class="ten-books">
+        <li class="ten-books" style="width: 180px;">
             <a href="{% url 'detail-knihy' book.pk %}">
                 {% if book.cover_image %}
                 <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
                 {% else %}
-                <img src="{% static 'images/empty_cover.jpg' %}" alt="Prázdný obal">
+                <img src="{% static 'images/empty_cover.webp' %}" style="border-radius: 15px 0 0 15px; height: 135px;" alt="Prázdný obal">
                 {% endif %}
             </a>
-            <p class="prehled-knih fs-6 fw-medium"> {{ book.title }} <br> {{ book.author }}  </p>
+            <p style="font-size: 15px; width:100%" class="prehled-knih fw-medium"> {{ book.title }} <br> {{ book.author }}  </p>
         </li>
         {% endfor %}
     </ul>

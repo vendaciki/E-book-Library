@@ -5,10 +5,14 @@
 {% endblock %}
 
 {% block content %}
+
 <h1>Žánr {{ genre.genre }}</h1>
+<div>
 {% for book in books %}
     <ul>
-        <li>{{ book.title }}</li>
+        <li>{{ book.author }} - {{ book.title }}</li>
     </ul>
-{% endfor %}
+    {% endfor %}
+</div>
+
 {% endblock %}
