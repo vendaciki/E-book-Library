@@ -14,7 +14,6 @@ Výpis šložky, abys viděla, co je v ní, se dělá příkazem
 5. No a teď by měl jít spustit web. V příkazové řádce prověď příkaz ```python manage.py runserver```.
 6. Ve webovém prohlížeči napiš adresu ```127.0.0.1:8000``` a nebo ```localhost:8000```.
 
-Na soubory google_books.py potřebujeme instalovat balíček requests pomocí příkazu ```pip install requests```
 
 ```python.exe -m pip install --upgrade pip``` upgrade pythonu
 

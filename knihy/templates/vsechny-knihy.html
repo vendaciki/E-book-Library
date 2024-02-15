@@ -11,7 +11,7 @@ Seznam všech knih
 <div class="all-books police2">
     <ul>
         {% for book in object_list %}
-        <li class="ten-books" style="width: 180px;">
+        <li class="ten-books">
             <a href="{% url 'detail-knihy' book.pk %}">
                 {% if book.cover_image %}
                 <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">

@@ -4,6 +4,7 @@
     align-content: flex-start;
     margin-bottom: 50px;
     min-height: 100vh;
+    margin-top: 30px;
 }
 
 .logo {
@@ -231,7 +232,7 @@ h1::after {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 200px;
+    width: 180px;
     flex: 0 0 calc(20% - 10px);
     margin-bottom: 25px;
 }
@@ -321,7 +322,7 @@ h1::after {
     padding: 10px;
     border: 1px solid #6253da;
     box-shadow: 0px 0px 9px #6253da;
-    border-radius: 30%;
+    border-radius: 8%;
     margin: 10px;
     flex: 0 0 auto;
 }
@@ -355,6 +356,16 @@ h1::after {
 .add-img a {
     margin: auto 10px;
 }
+
+
+.carousel {
+    margin-bottom: 20px;
+}
+
+.carousel-item {
+    max-height: 300px;
+}
+
 
 
 
@@ -540,7 +551,18 @@ footer {
     .navbar-nav {
         margin: 15px auto;
     }
+    
+    .books {
+        border-radius: 10px 10px 0 0;
+    }
 
+    .authors {
+        border-radius: 0 0 10px 10px;
+    }
+
+    .genre {
+        border-radius: 10px;
+    }
 
 
 }
