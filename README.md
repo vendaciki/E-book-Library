@@ -43,6 +43,6 @@ Výpis šložky, abys viděla, co je v ní, se dělá příkazem
 7. Dále napíšeme ```code .``` a zase enter.
 8. Otevře se VS s aktuální složkou, na které chceme pracovat.
 
-- musíte být přihlášeni na VS studiu do GitHubu, aby se vám propisoval repozitář, což uděláte vlevo dole pod ikonou postavičky ![Obrázek postavičky](https://ibb.co/sbfcC83)
+- musíte být přihlášeni na VS studiu do GitHubu, aby se vám propisoval repozitář, což uděláte vlevo dole pod ikonou postavičky ![Obrázek postavičky](https://i.ibb.co/6rMG8js/02.png)
 - aby jste mohli změněné soubory posílat na GitHub, přejdete na levém panelu na ikonu 
-![Obrázek ikony](https://ibb.co/ZWQmfd7)
+![Obrázek ikony](https://i.ibb.co/MMz6gnQ/01.png)
