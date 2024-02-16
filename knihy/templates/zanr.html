@@ -10,9 +10,8 @@
 <div style="width: 100%;">
     <ul class="zanr">
         {% for book in books %}
-        <li>{{ book.title }} - {{ book.author }}
-            {% comment %} <a>
-            </a> {% endcomment %}
+        <li>
+            <a href="{% url 'detail-knihy' book.pk %}">{{ book.title }} - {{ book.author }}</a>
         </li>
         {% endfor %}
     </ul>
