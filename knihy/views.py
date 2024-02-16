@@ -18,8 +18,11 @@ class BooksView(ListView):
         # authors = Author.objects.all()
         last_8_authors = Author.objects.order_by("-id")[:8]
         context["authors"] = last_8_authors
-
-        genres = Genre.objects.order_by("genre")
+        # vypíše všechny žánry:
+        # genres = Genre.objects.order_by("genre")
+        
+        # vypíše jen ty žánry, které mají knihy
+        genres = Genre.objects.filter(book__isnull=False).distinct()
         context["genres"] = genres
 
         return context

@@ -26,7 +26,7 @@
             <div>
                 <p>Hodnocení: {{ average_rating }}</p>
                 <p><strong>Napsal:</strong> <a class="fs-5" style="text-decoration: none;" href="{% url 'detail-autora' book.author.pk %}">{{ book.author }}</a></p>
-                <p><strong>Žánr:</strong> {{ book.genre }}</p>
+                <p><strong>Žánr:</strong> <a href="{% url 'zanr' book.genre.pk %}">{{ book.genre }}</a></p>
                 <p><strong>Rok vydání:</strong> {{ book.publication_date }}</p>
                 <p><strong>ISBN:</strong> {{book.ISBN }}</p>
             </div>
