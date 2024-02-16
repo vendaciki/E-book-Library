@@ -21,6 +21,9 @@ Výpis šložky, abys viděla, co je v ní, se dělá příkazem
 
 ```ctr + c```  vypnout server a pak shift + šipka hore
 
+
+
+
 # Práce s gitem
 ## Poslat úpravy na github:
 ```git add .```
@@ -32,8 +35,8 @@ Výpis šložky, abys viděla, co je v ní, se dělá příkazem
 
 
 
-# Clonování - VS a GitHub
 
+# Clonování - VS a GitHub
 1. Nainstalujeme si GIT a VS code pokud ještě nemáme. Taky budeme potřebovat účet na GitHubu.
 2. Vybereme si složku, kam chceme vložit nový repozitář, na klávesnici stikneme SHIFT a na myši stikneme pravé tlačítko. Rozbalí se nám menu a vybereme ```Open Git Bash here``` a otevře se příkazový řádek GITu.
 3. Najdeme si na GitHubu repozitář, který chceme naklonovat, klikneme na zelený tlačítko CODE a v local skopírujeme odkaz na repozitář.
