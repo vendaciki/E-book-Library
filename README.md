@@ -45,4 +45,4 @@ Výpis šložky, abys viděla, co je v ní, se dělá příkazem
 
 - musíte být přihlášeni na VS studiu do GitHubu, aby se vám propisoval repozitář, což uděláte vlevo dole pod ikonou postavičky ![Obrázek postavičky](https://drive.google.com/file/d/1IdTwjk5MzQfX0aPywY_XbZF8pHKVs0jW/view)
 - aby jste mohli změněné soubory posílat na GitHub, přejdete na levém panelu na ikonu 
-![Obrázek ikony](https://drive.google.com/file/d/1sLOUK5PURbz-STuQfZEXDPaUPcKO-0SL/view?usp=sharing)
+![Obrázek ikony](https://drive.google.com/file/d/1sLOUK5PURbz-STuQfZEXDPaUPcKO-0SL/view?usp=drive_link)
