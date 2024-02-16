@@ -44,6 +44,6 @@ Výpis šložky, abys viděla, co je v ní, se dělá příkazem
 8. Otevře se VS s aktuální složkou, na které chceme pracovat.
 
 - musíte být přihlášeni na VS studiu do GitHubu, aby se vám propisoval repozitář, což uděláte vlevo dole pod ikonou postavičky<br>
-![Obrázek postavičky](https://i.ibb.co/6rMG8js/02.png)
+![Obrázek postavičky](https://i.ibb.co/kHPcsM7/02.png)
 - aby jste mohli změněné soubory posílat na GitHub, přejdete na levém panelu na ikonu 
 ![Obrázek ikony](https://i.ibb.co/MMz6gnQ/01.png)
