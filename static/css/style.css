@@ -192,7 +192,7 @@ h1::after {
     flex-wrap: wrap;
 }
 
-.ten-books a, .ten-authors a, .genre a {
+.ten-books a, .ten-authors a, .genre a, .zanr a {
     text-decoration: none;
 }
 
