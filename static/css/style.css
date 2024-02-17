@@ -319,7 +319,7 @@ h1::after {
 }
 
 .genre li {
-    padding: 10px;
+    padding: 5px 15px;
     border: 1px solid #6253da;
     box-shadow: 0px 0px 9px #6253da;
     border-radius: 8%;
@@ -357,7 +357,6 @@ h1::after {
     margin: auto 10px;
 }
 
-
 .carousel {
     margin-bottom: 20px;
 }
@@ -365,6 +364,31 @@ h1::after {
 .carousel-item {
     max-height: 300px;
 }
+
+.dot {
+    box-sizing: content-box;
+    flex: 0 1 auto;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    padding: 0;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    opacity: .5;
+    transition: opacity .6s ease;
+}
+
+.carousel-dark .dot {
+    background-color: #000;
+}
+
 
 
 

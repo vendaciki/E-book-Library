@@ -7,7 +7,15 @@
 
 {% block content %}
 
+
+
 <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators" style="margin-bottom: 0;">
+        <button type="button" data-bs-slide-to="0" class="active dot" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-slide-to="1" class="dot" aria-label="Slide 2"></button>
+        <button type="button" data-bs-slide-to="2" class="dot" aria-label="Slide 3"></button>
+        <button type="button" data-bs-slide-to="3" class="dot" aria-label="Slide 4"></button>
+    </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="../../static/images/slide1.png" class="d-block w-100" alt="...">
@@ -24,13 +32,15 @@
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden"><</span>
+        <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">></span>
+        <span class="visually-hidden">Next</span>
     </button>
-  </div>
+</div>
+
+
 
 <div class="books">
     <h1>Přehled nových knih</h1>
@@ -92,7 +102,5 @@
         </ul>
     </div>
 </div>
-
-<script type="text/javascript" src="../../static/js/script.js"></script> 
 
 {% endblock%}
