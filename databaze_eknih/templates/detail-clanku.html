@@ -7,17 +7,20 @@
 <!-- vkládá obsah tohoto html souboru do base.html do části "block content"-->
 {% block content %}
 
-<div>
+<div class="article">
     <h1>
         {{ post.title }}
     </h1>
     <div class="article-detail">
-        <small>By: {{ post.author }} - {{ post.post_date }}
+        <div class="who-articles">
+            By: {{ post.author }} - {{ post.post_date }}
             {% if user.is_authenticated %}
-            <a href="{% url 'upravit-clanek' post.pk %}">(Upravit)</a>
-            <a href="{% url 'smazat-clanek' post.pk %}">(Smazat)</a>
+            <div>
+                <a href="{% url 'upravit-clanek' post.pk %}">(Upravit)</a>
+                <a href="{% url 'smazat-clanek' post.pk %}">(Smazat)</a>
+            </div> 
             {% endif %}
-        </small>
+        </div>
         <hr>
         <p>{{ post.body|safe }}</p>
     </div>

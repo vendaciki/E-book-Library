@@ -68,6 +68,12 @@ form .control {
     border-radius: 10px 0 0 10px;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+.article {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+}
     
 .articles {
     display: grid;
@@ -375,7 +381,6 @@ h1::after {
     margin-right: 3px;
     margin-left: 3px;
     text-indent: -999px;
-    cursor: pointer;
     background-color: #fff;
     background-clip: padding-box;
     border: 0;
@@ -554,6 +559,10 @@ footer {
 
     #footer .copyright {
         left: 0;
+    }
+
+    .article {
+        width: 100%;
     }
 
     .articles {
