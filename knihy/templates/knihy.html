@@ -30,12 +30,12 @@
             <img src="../../static/images/slide4.png" class="d-block w-100" alt="...">
         </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <button style="width: 4%;" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span style="height: 100%; background-color: #000000;width: 4rem;" class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <button style="width: 4%;" class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span style="height: 100%; background-color: #000000;width: 4rem;" class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
 </div>
@@ -70,7 +70,7 @@
             <ul>
             {% for author in authors %}
                 <li class="ten-authors">
-                    <a href="{% url 'detail-autora' author.pk %}" style="margin-bottom: 0; cursor: pointer" class="prehled-knih fs-6 fw-medium">{{ author.first_name }} {{ author.last_name }}
+                    <a href="{% url 'detail-autora' author.pk %}" style="margin-bottom: 0; cursor: pointer" class="prehled-knih fs-5 fw-medium">{{ author.first_name }} {{ author.last_name }}
                     </a>
                 </li>
                 {% endfor %}
