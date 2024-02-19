@@ -35,7 +35,7 @@ class AddBookView(CreateView):
 
     def get_success_url(self):
             # Dynamically generate the success URL using self.object.id
-            return reverse_lazy("detail-knihy", kwargs={'pk': self.object.id})
+            return reverse_lazy("detail-knihy", kwargs={'slug': self.object.slug})
         # success_url = reverse_lazy("knihy")
 
 class BookDetailView(DetailView):
@@ -63,7 +63,7 @@ class UpdateBookDetail(UpdateView):
 
     def get_success_url(self):
         # Dynamically generate the success URL using self.object.id
-        return reverse_lazy("detail-knihy", kwargs={'pk': self.object.id})
+        return reverse_lazy("detail-knihy", kwargs={'slug': self.object.slug})
     # success_url = reverse_lazy("knihy")
 
 

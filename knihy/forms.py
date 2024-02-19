@@ -4,7 +4,7 @@ from .models import Book, Author
 class PostBookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = "__all__"
+        fields = ("title", "author", "genre", "publication_date", "ISBN", "summary", "cover_image")
     
     # přidávám class, se kterou pracuji v CSS; stejně tak můžu přidat jakýkoliv jiný parametr
         widgets = {
