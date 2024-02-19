@@ -48,7 +48,7 @@
         <ul style="justify-content: space-around;">
             {% for book in object_list %}
             <li class="ten-books">
-                <a href="{% url 'detail-knihy' book.pk %}">
+                <a href="{% url 'detail-knihy' book.slug %}">
                     {% if book.cover_image %}
                     <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
                     {% else %}
@@ -96,7 +96,7 @@
         <ul style="padding-left:0;">
             {% for genre in genres %}
             <li>
-                <a href="{% url 'zanr' genre.pk %}">{{ genre }}</a>
+                <a href="{% url 'zanr' genre.slug %}">{{ genre }}</a>
             </li>
             {% endfor %}
         </ul>

@@ -11,7 +11,7 @@
     <ul class="zanr">
         {% for book in books %}
         <li>
-            <a href="{% url 'detail-knihy' book.pk %}">{{ book.title }} - {{ book.author }} ({{ book.publication_date }})</a>
+            <a href="{% url 'detail-knihy' book.slug %}">{{ book.title }} - {{ book.author }} ({{ book.publication_date }})</a>
         </li>
         {% endfor %}
     </ul>

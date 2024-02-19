@@ -14,7 +14,7 @@
     <ul class="author-books-list">
         {% for book in author.book_set.all %}
         <li class="ten-books">
-            <a href="{% url 'detail-knihy' book.pk %}">
+            <a href="{% url 'detail-knihy' book.slug %}">
                 {% if book.cover_image %}
                     <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
                     {% else %}
