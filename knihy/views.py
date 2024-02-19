@@ -102,6 +102,24 @@ class AllBooksView(ListView):
     model = Book
     template_name = "vsechny-knihy.html"
     ordering = ["title"]
+    paginate_by = 35
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        all_books = self.get_queryset()
+
+        # Use pagination
+        paginator = Paginator(all_books, self.paginate_by)
+        page = self.request.GET.get('page')
+
+        try:
+            context["all_books"] = paginator.page(page)
+        except PageNotAnInteger:
+            context["all_books"] = paginator.page(1)
+        except EmptyPage:
+            context["all_books"] = paginator.page(paginator.num_pages)
+
+        return context
 
 
 class AllAuthorsView(ListView):
