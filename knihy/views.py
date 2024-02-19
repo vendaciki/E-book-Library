@@ -5,6 +5,7 @@ from .models import Book, Author, Genre
 from .forms import PostBookForm, PostAuthorForm
 from django.urls import reverse_lazy
 from utils.google_books import get_review
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 class BooksView(ListView):
@@ -106,11 +107,26 @@ class AllBooksView(ListView):
 class AllAuthorsView(ListView):
     model = Author
     template_name = "vsichni-autori.html"
+    paginate_by = 20
+
+    def get_queryset(self):
+        return Author.objects.order_by("last_name")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        all_authors = Author.objects.order_by("last_name")
-        context["all_authors"] = all_authors
+        all_authors = self.get_queryset()
+
+        # Use pagination
+        paginator = Paginator(all_authors, self.paginate_by)
+        page = self.request.GET.get('page')
+
+        try:
+            context["all_authors"] = paginator.page(page)
+        except PageNotAnInteger:
+            context["all_authors"] = paginator.page(1)
+        except EmptyPage:
+            context["all_authors"] = paginator.page(paginator.num_pages)
+
         return context
 
 
@@ -118,6 +134,12 @@ class AuthorsByCharView(ListView):
     template_name = "vsichni-autori-abecedne.html"
     context_object_name = 'filtered_authors'
     model = Author
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        selected_char = self.kwargs.get("char")
+        context["selected_char"] = selected_char
+        return context
 
     def get_queryset(self):
         char = self.kwargs.get('char')
