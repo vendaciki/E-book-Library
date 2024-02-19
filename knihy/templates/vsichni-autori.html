@@ -7,6 +7,15 @@ Seznam všech autorů
 {% block content %}
 <h1>Seznam všech autorů podle abecedy</h1>
 
+<div class="abeceda-autoru">
+    <ul>{% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ'%}
+        <li style="list-style-type: none; padding: 10px;">
+            <a href="">{{ char }}</a>
+        </li>
+    </ul>  
+    {% endfor %}  
+</div>    
+
 <ul>
 {% for author in all_authors %}
     <li>

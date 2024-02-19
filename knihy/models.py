@@ -13,12 +13,17 @@ class Author(models.Model):
     last_name = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.last_name} {self.first_name}"
+    
+
+    class Meta:
+        ordering = ["last_name"]
 
 
 class Genre(models.Model):
     genre = models.CharField(max_length=50)
     slug = models.SlugField(default="", null=False, db_index=True)
+    icon = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
         return self.genre
@@ -26,6 +31,10 @@ class Genre(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.genre)
         super().save(*args, **kwargs)
+    
+
+    class Meta:
+        ordering = ["genre"]
 
 
 class Book(models.Model):

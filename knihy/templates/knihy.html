@@ -96,7 +96,7 @@
         <ul style="padding-left:0;">
             {% for genre in genres %}
             <li>
-                <a href="{% url 'zanr' genre.slug %}">{{ genre }} ({{ genre.book_set.count }})</a>
+                <a href="{% url 'zanr' genre.slug %}"><i class="{{ genre.icon }}"></i> {{ genre }} ({{ genre.book_set.count }})</a>
             </li>
             {% endfor %}
         </ul>
