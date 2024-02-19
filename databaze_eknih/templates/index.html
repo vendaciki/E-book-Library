@@ -8,6 +8,11 @@
     <h2 style="margin-top: 20px;">
         Nejnovější články
     </h2>
+    <div>
+    {% if user.is_authenticated %}
+           <a class="btn btn-primary" href="{% url "pridat-clanek" %}">Přidat článek</a>
+    {% endif %}
+    </div>
     <ul class="articles" style="margin-top: 20px;">
         {% for post in object_list %}
         <li>
