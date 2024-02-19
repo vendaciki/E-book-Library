@@ -114,6 +114,16 @@ class AllAuthorsView(ListView):
         return context
 
 
+class AuthorsByCharView(ListView):
+    template_name = "vsichni-autori-abecedne.html"
+    context_object_name = 'filtered_authors'
+    model = Author
+
+    def get_queryset(self):
+        char = self.kwargs.get('char')
+        return Author.objects.filter(last_name__istartswith=char).order_by('last_name')
+
+
 class GenreDetailView(DetailView):
     model = Genre
     template_name = "zanr.html"

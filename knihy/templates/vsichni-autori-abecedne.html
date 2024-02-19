@@ -16,15 +16,18 @@ Seznam všech autorů
     {% endfor %}  
 </div>    
 
-<ul>
-{% for author in all_authors %}
-    <li>
-        <a href="{% url 'detail-autora' author.slug %}">
-            <p>{{ author.first_name }} {{ author.last_name }}</p>
-        </a>
-    </li>
+<div>
+    {% for author in filtered_authors %}
+    <ul>
+        <li>
+            <a href="{% url 'detail-autora' author.slug %}">
+                <p>{{ author.last_name }} {{ author.first_name }}</p>
+            </a>
+        </li>
+    </ul>
     {% endfor %}
-</ul>
+</div>
+
 
 
 

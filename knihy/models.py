@@ -11,9 +11,14 @@ python manage.py migrate
 class Author(models.Model):
     first_name = models.CharField(max_length=50, default="")
     last_name = models.CharField(max_length=50, null=True, blank=True)
+    slug = models.SlugField(max_length=50, null=True, blank=True)
 
     def __str__(self):
         return f"{self.last_name} {self.first_name}"
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(f"{self.first_name} {self.last_name}")
+        super().save(*args, **kwargs)
     
 
     class Meta:

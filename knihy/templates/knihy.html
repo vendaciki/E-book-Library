@@ -70,7 +70,7 @@
             <ul>
             {% for author in authors %}
                 <li class="ten-authors">
-                    <a href="{% url 'detail-autora' author.pk %}" style="margin-bottom: 0; cursor: pointer" class="prehled-knih fs-5 fw-medium">{{ author.first_name }} {{ author.last_name }}
+                    <a href="{% url 'detail-autora' author.slug %}" style="margin-bottom: 0; cursor: pointer" class="prehled-knih fs-5 fw-medium">{{ author.first_name }} {{ author.last_name }}
                     </a>
                 </li>
                 {% endfor %}
