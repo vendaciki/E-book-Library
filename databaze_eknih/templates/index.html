@@ -22,10 +22,12 @@
                 
                 <!-- pokud je uživatel přihlášen, ukaž odkaz na upravení a smazání -->
                 {% if user.is_authenticated %}
-                <div>
-                    <a href="{% url 'upravit-clanek' post.pk %}">(Upravit)</a> 
-                    <a href="{% url 'smazat-clanek' post.pk %}">(Smazat)</a>
-                </div> 
+                    {% if user ==  post.author or user.is_staff %}
+                        <div>
+                            <a href="{% url 'upravit-clanek' post.pk %}">(Upravit)</a> 
+                            <a href="{% url 'smazat-clanek' post.pk %}">(Smazat)</a>
+                        </div> 
+                    {% endif %}
                 {% endif %}
             </div>
             <hr>

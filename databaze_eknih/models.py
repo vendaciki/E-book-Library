@@ -15,5 +15,5 @@ class Post(models.Model):
         return self.title + " | " + str(self.author)
     
     def get_absolute_url(self):
-        return reverse("detail-clanku", args=(str(self.id)))
+        return reverse("detail-clanku", kwargs={'pk': self.id})
         # lze return reverse("home")
