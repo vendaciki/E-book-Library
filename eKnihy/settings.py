@@ -108,8 +108,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
 # původní language je en
-# LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'cs'
+LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'cs'
 
 LANGUAGES = [
     ('cs', _('Czech')),
