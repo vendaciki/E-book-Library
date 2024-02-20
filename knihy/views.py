@@ -6,6 +6,7 @@ from .forms import PostBookForm, PostAuthorForm
 from django.urls import reverse_lazy
 from utils.google_books import get_review
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 
 
 class BooksView(ListView):
@@ -72,6 +73,15 @@ class SearchView(ListView):
     model = Book
     template_name = "vysledky-hledani.html"
 
+    # def get_queryset(self):
+    #     query = self.request.GET.get("q")
+    #     object_list = Book.objects.filter(
+    #         title__icontains=query
+    #     )
+    #     return object_listclass SearchView(ListView):
+    model = Book
+    template_name = "vysledky-hledani.html"
+
     def get_queryset(self):
         query = self.request.GET.get("q")
         object_list = Book.objects.filter(
@@ -83,6 +93,27 @@ class SearchView(ListView):
         context = super().get_context_data(**kwargs)
         context['query'] = self.request.GET.get("q")
         return context
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['query'] = self.request.GET.get("q")
+    #     return context
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        book_results = Book.objects.filter(
+            title__icontains=query
+        )
+        author_results = Author.objects.filter(
+            Q(first_name__icontains=query) | Q(last_name__icontains=query)
+        )
+        return book_results, author_results
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["query"] = self.request.GET.get("q")
+        context["books"], context["authors"] = self.get_queryset()
+        return context
+    
 
 
 class AddAuthorView(CreateView):
