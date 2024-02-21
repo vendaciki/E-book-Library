@@ -23,7 +23,6 @@ Výpis šložky, abys viděla, co je v ní, se dělá příkazem
 
 
 
-
 # Práce s gitem
 ## Poslat úpravy na github:
 ```git add .```
@@ -32,6 +31,8 @@ Výpis šložky, abys viděla, co je v ní, se dělá příkazem
 
 ## Stáhnout z githubu:
 ```git pull origin master```
+
+
 
 
 
