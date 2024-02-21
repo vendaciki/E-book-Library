@@ -16,5 +16,12 @@
         {{ form.as_p }}
         <button class="btn btn-dark">Přihlásit</button>
 </div>
+
+<script>
+    var username = document.getElementById("id_username");
+    var password = document.getElementById("id_password");
+    username.classList.add("form-control");
+    password.classList.add("form-control");
+</script>
     
 {% endblock %}

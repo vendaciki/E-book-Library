@@ -5,6 +5,8 @@ from .models import Book, Author, Genre
 from .forms import PostBookForm, PostAuthorForm
 from django.urls import reverse_lazy
 from utils.google_books import get_review
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 
 
 class BooksView(ListView):
@@ -71,6 +73,15 @@ class SearchView(ListView):
     model = Book
     template_name = "vysledky-hledani.html"
 
+    # def get_queryset(self):
+    #     query = self.request.GET.get("q")
+    #     object_list = Book.objects.filter(
+    #         title__icontains=query
+    #     )
+    #     return object_listclass SearchView(ListView):
+    model = Book
+    template_name = "vysledky-hledani.html"
+
     def get_queryset(self):
         query = self.request.GET.get("q")
         object_list = Book.objects.filter(
@@ -82,6 +93,27 @@ class SearchView(ListView):
         context = super().get_context_data(**kwargs)
         context['query'] = self.request.GET.get("q")
         return context
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['query'] = self.request.GET.get("q")
+    #     return context
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        book_results = Book.objects.filter(
+            title__icontains=query
+        )
+        author_results = Author.objects.filter(
+            Q(first_name__icontains=query) | Q(last_name__icontains=query)
+        )
+        return book_results, author_results
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["query"] = self.request.GET.get("q")
+        context["books"], context["authors"] = self.get_queryset()
+        return context
+    
 
 
 class AddAuthorView(CreateView):
@@ -101,16 +133,49 @@ class AllBooksView(ListView):
     model = Book
     template_name = "vsechny-knihy.html"
     ordering = ["title"]
+    paginate_by = 35
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        all_books = self.get_queryset()
+
+        # Use pagination
+        paginator = Paginator(all_books, self.paginate_by)
+        page = self.request.GET.get('page')
+
+        try:
+            context["all_books"] = paginator.page(page)
+        except PageNotAnInteger:
+            context["all_books"] = paginator.page(1)
+        except EmptyPage:
+            context["all_books"] = paginator.page(paginator.num_pages)
+
+        return context
 
 
 class AllAuthorsView(ListView):
     model = Author
     template_name = "vsichni-autori.html"
+    paginate_by = 20
+
+    def get_queryset(self):
+        return Author.objects.order_by("last_name")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        all_authors = Author.objects.order_by("last_name")
-        context["all_authors"] = all_authors
+        all_authors = self.get_queryset()
+
+        # Use pagination
+        paginator = Paginator(all_authors, self.paginate_by)
+        page = self.request.GET.get('page')
+
+        try:
+            context["all_authors"] = paginator.page(page)
+        except PageNotAnInteger:
+            context["all_authors"] = paginator.page(1)
+        except EmptyPage:
+            context["all_authors"] = paginator.page(paginator.num_pages)
+
         return context
 
 
@@ -118,6 +183,12 @@ class AuthorsByCharView(ListView):
     template_name = "vsichni-autori-abecedne.html"
     context_object_name = 'filtered_authors'
     model = Author
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        selected_char = self.kwargs.get("char")
+        context["selected_char"] = selected_char
+        return context
 
     def get_queryset(self):
         char = self.kwargs.get('char')

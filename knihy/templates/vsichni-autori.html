@@ -8,7 +8,8 @@ Seznam všech autorů
 <h1>Seznam všech autorů podle abecedy</h1>
 
 <div class="abeceda-autoru">
-    <ul>{% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ'%}
+    <ul>
+        {% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ'%}
         <li style="list-style-type: none; padding: 10px;">
             <a href="{% url 'vsichni-autori-abecedne' char %}">{{ char }}</a>
         </li>
@@ -16,16 +17,35 @@ Seznam všech autorů
     {% endfor %}  
 </div>    
 
-<ul>
-{% for author in all_authors %}
-    <li>
-        <a href="{% url 'detail-autora' author.slug %}">
-            <p>{{ author.first_name }} {{ author.last_name }}</p>
-        </a>
-    </li>
+<div>
+    {% for author in all_authors %}
+    <ul>
+        <li>
+            <a href="{% url 'detail-autora' author.slug %}">
+                <p>{{ author.last_name }} {{ author.first_name }}</p>
+            </a>
+        </li>
+    </ul>
     {% endfor %}
-</ul>
 
+    <div class="pagination">
+        <span class="step-links">
+            {% if all_authors.has_previous %}
+                <a href="?page=1">&laquo; první</a>
+                <a href="?page={{ all_authors.previous_page_number }}">předešlá</a>
+            {% endif %}
+
+            <span class="current">
+                Stránka {{ all_authors.number }} z {{ all_authors.paginator.num_pages }}
+            </span>
+
+            {% if all_authors.has_next %}
+                <a href="?page={{ all_authors.next_page_number }}">další</a>
+                <a href="?page={{ all_authors.paginator.num_pages }}">poslední &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
 
 
 {% endblock %}
