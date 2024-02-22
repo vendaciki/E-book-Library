@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}
     Výsledky hledání
 {% endblock %}
@@ -8,13 +8,20 @@
 <h1>Výsledky hledání pro "{{ query }}"</h1>
 
 {% if books %}
-    <section>
+<div class="vysledky">
+    <section class="vysl-knih">
         <h3>Knihy:</h3>
         <ul>
             {% for book in books %}
             <li>
-                <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
-                <a href="{% url 'detail-knihy' book.slug %}"> {{ book.title }} </a> 
+                {% comment %} <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover"> {% endcomment %}
+                
+                {% if book.cover_image %}
+                    <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+                {% else %}
+                    <img src="{% static 'images/empty_cover.webp' %}" style="border-radius: 15px 0 0 15px;" alt="Prázdný obal">
+                {% endif %}
+                <a href="{% url 'detail-knihy' book.slug %}"> {{ book.title }} </a>
             </li>
             {% endfor %}
         </ul>
@@ -22,16 +29,17 @@
 {% endif %}
 
 {% if authors %}
-    <section>
+    <section class="vysl-autoru">
         <h3>Autoři:</h3>
         <ul>
             {% for author in authors %}
             <li>
-                <a href="">{{ author.last_name }} {{ author.first_name }} </a>
+                <a href="{% url 'detail-autora' author.slug %}">{{ author.last_name }} {{ author.first_name }} </a>
             </li>
             {% endfor %}
         </ul>
     </section>
+</div>
 {% endif %}
 
 {% endblock %}

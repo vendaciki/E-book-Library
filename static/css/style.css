@@ -8,7 +8,6 @@
 }
 
 section {
-    width: 100%;
     margin-top: 30px;
 }
 
@@ -16,6 +15,20 @@ section ul {
     display: grid;
     grid-gap: 20px;
     width: 50%;
+}
+
+.vysledky {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vysl-knih {
+    width: 70%;
+}
+
+.vysl-autoru {
+    width: 30%;
 }
 
 .logo {
@@ -280,10 +293,6 @@ h1::after {
     flex: 0 0 calc(16.666% - 10px);
 }
 
-.author-books img {
-    margin: 0 50px;
-}
-
 .authors, .books, .genre {
     box-shadow: 0px 0px 5px 0px #6253da;
     padding: 15px;
@@ -421,6 +430,11 @@ h1::after {
     font-size: 20px;
 }
 
+.pagination {
+    width: 100%;
+    justify-content: flex-end;
+}
+
 
 
 
@@ -532,8 +546,12 @@ footer {
 
 @media screen and (max-width: 1024px) {
 
-    .new-books {
+    .new-books, .police2 {
         background-image: none;
+    }
+
+    .all-books ul {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 }
 
@@ -541,6 +559,10 @@ footer {
 
     .author-books {
         flex: 0 0 calc(20% - 10px);
+    }
+
+    .all-books ul {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
 
@@ -569,15 +591,8 @@ footer {
 
 @media screen and (max-width: 700px) {
 
-    form {
-        width: 100%;
-    }
-
-    .prihlasit {
-        width: 100%;
-    }
-
-    .books, .autori, .genre {
+    .books, .autori, .genre, .prihlasit, form, section ul,
+    .article, .articles, .vysl-knih, .vysl-autoru {
         width: 100%;
     }
 
@@ -589,6 +604,10 @@ footer {
         background-image: none;
     }
 
+    .all-books ul {
+        grid-template-columns: 1fr 1fr;
+    }
+
     .fab, .fa {
         margin: 10px;
         font-size: 20px;
@@ -596,14 +615,6 @@ footer {
 
     #footer .copyright {
         left: 0;
-    }
-
-    .article {
-        width: 100%;
-    }
-
-    .articles {
-        width: 100%;
     }
 
     .ten-books img, .author-books img, .all-books img {
@@ -632,6 +643,11 @@ footer {
 
     .genre {
         border-radius: 10px;
+    }
+
+    .pagination {
+        width: 100%;
+        justify-content: center;
     }
 
 

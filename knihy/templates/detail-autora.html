@@ -16,12 +16,12 @@
         <li class="ten-books">
             <a href="{% url 'detail-knihy' book.slug %}">
                 {% if book.cover_image %}
-                    <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
-                    {% else %}
-                    <img src="{% static 'images/empty_cover.webp' %}" style="border-radius: 15px 0 0 15px;" alt="Prázdný obal">
-                    {% endif %}
+                <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+                {% else %}
+                <img src="{% static 'images/empty_cover.webp' %}" style="border-radius: 15px 0 0 15px;" alt="Prázdný obal">
+                {% endif %}
             </a>
-            <p style="margin-top: 20px;" class="prehled-knih fw-medium"> {{ book.title }} <br> ({{ book.publication_date }})</p>
+            <p style="margin-top: 20px; width: 100%" class="prehled-knih fw-medium"> {{ book.title }} <br> ({{ book.publication_date }})</p>
         </li>
         {% empty %}
             <p>Žádné knihy nejsou dostupné.</p>
