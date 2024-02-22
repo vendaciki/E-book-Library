@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'databaze_eknih',
     'members',
     'knihy',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

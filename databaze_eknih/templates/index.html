@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load custom_filters %}
+
 {% block content %}
 
     <h1>
@@ -32,7 +34,7 @@
             </div>
             <hr>
             <!-- slice:":400" = ukáže prvních 400 znaků z článku na indexu -->
-            {{ post.body|slice:":400"|safe }}
+            {{ post.body|slice:":400"|strip_image_tags|safe }}
         </li>
     {% endfor %}
     </ul>   
