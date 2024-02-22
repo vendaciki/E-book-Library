@@ -13,9 +13,7 @@
         <h3>Knihy:</h3>
         <ul>
             {% for book in books %}
-            <li>
-                {% comment %} <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover"> {% endcomment %}
-                
+            <li>            
                 {% if book.cover_image %}
                     <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
                 {% else %}

@@ -280,7 +280,7 @@ h1::after {
     font-size: 16px;
 }
 
-.ten-books img, .author-books img, .all-books img, section img {
+.ten-books img, .author-books img, .all-books img, section img, .zanr img {
     max-width: 100%;
     height: 135px;
     box-shadow: 3px 3px 10px 0px #171717;
@@ -373,8 +373,14 @@ h1::after {
     margin-bottom: 0;
 }
 
+.zanr div {
+    margin: auto 20px;
+}
+
 .zanr li {
-    border: 1px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
     padding: 10px;
 }
 
@@ -649,6 +655,26 @@ footer {
         width: 100%;
         justify-content: center;
     }
+
+    .zanr {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .zanr li {
+        justify-content: center;
+    }
+
+    .zanr div {
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .zanr img {
+        margin-bottom: 15px;
+    }
+
+
+
 
 
 }

@@ -11,7 +11,10 @@
     <ul class="zanr">
         {% for book in books %}
         <li>
-            <a href="{% url 'detail-knihy' book.slug %}">{{ book.title }} - {{ book.author }} ({{ book.publication_date }})</a>
+            <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+            <div>
+                <a href="{% url 'detail-knihy' book.slug %}">{{ book.title }} <br> {{ book.author }} <br> ({{ book.publication_date }})</a>
+            </div>
         </li>
         {% endfor %}
     </ul>
