@@ -7,6 +7,17 @@
     margin-top: 30px;
 }
 
+section {
+    width: 100%;
+    margin-top: 30px;
+}
+
+section ul {
+    display: grid;
+    grid-gap: 20px;
+    width: 50%;
+}
+
 .logo {
     width: 50px;
 }
@@ -14,6 +25,10 @@
 .form-group {
     width: 100%;
     margin-top: 30px;
+}
+
+.prihlasit {
+    width: 20%;
 }
 
 form {
@@ -94,6 +109,7 @@ form .control {
 .who-articles {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 .who-articles a {
@@ -101,10 +117,13 @@ form .control {
 }
 
 .article-detail {
+    display: flex;
+    flex-wrap: wrap;
     box-shadow: 0px 0px 5px grey;
     padding: 15px;
     margin: 20px auto;
     border-radius: 10px;
+    width: 100%;
 }
 
 small {
@@ -248,7 +267,7 @@ h1::after {
     font-size: 16px;
 }
 
-.ten-books img, .author-books img, .all-books img {
+.ten-books img, .author-books img, .all-books img, section img {
     max-width: 100%;
     height: 135px;
     box-shadow: 3px 3px 10px 0px #171717;
@@ -511,6 +530,13 @@ footer {
     }
 }
 
+@media screen and (max-width: 1024px) {
+
+    .new-books {
+        background-image: none;
+    }
+}
+
 @media screen and (max-width: 800px) {
 
     .author-books {
@@ -544,6 +570,10 @@ footer {
 @media screen and (max-width: 700px) {
 
     form {
+        width: 100%;
+    }
+
+    .prihlasit {
         width: 100%;
     }
 

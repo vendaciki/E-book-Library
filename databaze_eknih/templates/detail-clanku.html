@@ -13,7 +13,7 @@
     </h1>
     <div class="article-detail">
         <div class="who-articles">
-            By: {{ post.author }} - {{ post.post_date }}
+            {{ post.author }} - {{ post.post_date }}
             {% if user.is_authenticated %}
                 {% if user ==  post.author or user.is_staff %}
                     <div>
@@ -23,7 +23,7 @@
                 {% endif %}
             {% endif %}
         </div>
-        <hr>
+        <hr style="width: 100%;">
         <p>{{ post.body|safe }}</p>
     </div>
 

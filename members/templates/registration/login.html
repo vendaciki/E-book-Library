@@ -8,13 +8,13 @@
     Přihlášení
 </h1>
 <div class="form-group">
-    <form method="POST">
+    <form class="prihlasit" method="POST">
         <!-- token je pro bezpečnost při posílání formuláře -->
         {% csrf_token %}
         <!-- vytvoří formulář jako <p>; form.as_ul vytvoří formulář jako <ul> -->
         <!-- kolonky se modifikují v souboru forms.py, kde je jim udělena třída class="form-control" -->    
         {{ form.as_p }}
-        <button class="btn btn-dark">Přihlásit</button>
+        <button class="btn btn-primary">Přihlásit</button>
 </div>
 
 <script>

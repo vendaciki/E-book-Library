@@ -10,34 +10,36 @@
     <h2 style="margin-top: 20px;">
         Nejnovější články
     </h2>
-    <div>
-    {% if user.is_authenticated %}
-           <a class="btn btn-primary" href="{% url "pridat-clanek" %}">Přidat článek</a>
-    {% endif %}
-    </div>
-    <ul class="articles" style="margin-top: 20px;">
-        {% for post in object_list %}
-        <li>
-            <a class="fs-5" href="{% url 'detail-clanku' post.pk %}">{{ post.title }}</a> 
-            <div class="who-articles">
-                {{ post.author }} - {{ post.post_date }}
-                
-                <!-- pokud je uživatel přihlášen, ukaž odkaz na upravení a smazání -->
-                {% if user.is_authenticated %}
-                    {% if user ==  post.author or user.is_staff %}
-                        <div>
-                            <a href="{% url 'upravit-clanek' post.pk %}">(Upravit)</a> 
-                            <a href="{% url 'smazat-clanek' post.pk %}">(Smazat)</a>
-                        </div> 
+    <div style="margin-top: 30px;">
+        <div>
+        {% if user.is_authenticated %}
+            <a class="btn btn-primary" href="{% url "pridat-clanek" %}">Přidat článek</a>
+        {% endif %}
+        </div>
+        <ul class="articles" style="margin-top: 20px;">
+            {% for post in object_list %}
+            <li>
+                <a class="fs-5" href="{% url 'detail-clanku' post.pk %}">{{ post.title }}</a> 
+                <div class="who-articles">
+                    {{ post.author }} - {{ post.post_date }}
+                    
+                    <!-- pokud je uživatel přihlášen, ukaž odkaz na upravení a smazání -->
+                    {% if user.is_authenticated %}
+                        {% if user ==  post.author or user.is_staff %}
+                            <div>
+                                <a href="{% url 'upravit-clanek' post.pk %}">(Upravit)</a> 
+                                <a href="{% url 'smazat-clanek' post.pk %}">(Smazat)</a>
+                            </div> 
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-            </div>
-            <hr>
-            <!-- slice:":400" = ukáže prvních 400 znaků z článku na indexu -->
-            {{ post.body|slice:":400"|strip_image_tags|safe }}
-        </li>
-    {% endfor %}
-    </ul>   
+                </div>
+                <hr>
+                <!-- slice:":400" = ukáže prvních 400 znaků z článku na indexu -->
+                {{ post.body|slice:":400"|strip_image_tags|safe }}
+            </li>
+        {% endfor %}
+        </ul>   
+    </div>
 
 {% endblock %}
 

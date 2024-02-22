@@ -8,29 +8,30 @@
 <h1>Výsledky hledání pro "{{ query }}"</h1>
 
 {% if books %}
-    <div class="container">
+    <section>
         <h3>Knihy:</h3>
         <ul>
             {% for book in books %}
             <li>
-                <a href="{% url 'detail-knihy' book.slug %}"> {{ book.title }} </a>      
+                <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+                <a href="{% url 'detail-knihy' book.slug %}"> {{ book.title }} </a> 
             </li>
+            {% endfor %}
         </ul>
-    </div>
-    {% endfor %}
+    </section>
 {% endif %}
 
 {% if authors %}
-    <div class="container">
+    <section>
         <h3>Autoři:</h3>
         <ul>
             {% for author in authors %}
             <li>
                 <a href="">{{ author.last_name }} {{ author.first_name }} </a>
             </li>
+            {% endfor %}
         </ul>
-    </div>
-    {% endfor %}
+    </section>
 {% endif %}
 
 {% endblock %}
