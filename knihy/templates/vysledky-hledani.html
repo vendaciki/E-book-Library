@@ -19,16 +19,16 @@
                 {% else %}
                     <img src="{% static 'images/empty_cover.webp' %}" style="border-radius: 15px 0 0 15px;" alt="Prázdný obal">
                 {% endif %}
-                <a href="{% url 'detail-knihy' book.slug %}"> {{ book.title }} </a>
+                <a href="{% url 'detail-knihy' book.slug %}"> {{ book.title }} <br> {{ book.author }} <br> ({{ book.publication_date }}) </a>
             </li>
             {% endfor %}
         </ul>
     </section>
-</div>
+
 {% endif %}
 
 {% if authors %}
-<div class="vysledky">
+
     <section class="vysl-autoru">
         <h3>Autoři:</h3>
         <ul>

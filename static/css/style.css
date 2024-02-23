@@ -14,7 +14,6 @@ section {
 section ul {
     display: grid;
     grid-gap: 20px;
-    width: 50%;
 }
 
 .vysledky {
@@ -25,6 +24,18 @@ section ul {
 
 .vysl-knih {
     width: 70%;
+}
+
+.vysl-knih li {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vysl-knih a {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    margin-left: 15px;
 }
 
 .vysl-autoru {
@@ -502,38 +513,6 @@ footer {
 .fa-envelope:before {
     content: "\f0e0"
 }
-
-@font-face {
-    font-family: "Font Awesome 5 Brands";
-    src: url(../webfonts/fa-brands-400.eot);
-    src: url(../webfonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),
-    url(../webfonts/fa-brands-400.woff2) format("woff2"),
-    url(../webfonts/fa-brands-400.woff) format("woff"),
-    url(../webfonts/fa-brands-400.ttf) format("truetype"),
-    url(../webfonts/fa-brands-400.svg#fontawesome) format("svg")
-}
-
-@font-face {
-    font-family: "Font Awesome 5 Free Regular";
-    src: url(../webfonts/fa-regular-400.eot);
-    src: url(../webfonts/fa-regular-400.eot?#iefix) format("embedded-opentype"),
-    url(../webfonts/fa-regular-400.woff2) format("woff2"),
-    url(../webfonts/fa-regular-400.woff) format("woff"),
-    url(../webfonts/fa-regular-400.ttf) format("truetype"),
-    url(../webfonts/fa-regular-400.svg#fontawesome) format("svg")
-}
-
-@font-face {
-    font-family: "Font Awesome 5 Free Solid";
-    src: url(../webfonts/fa-solid-900.eot);
-    src: url(../webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),
-    url(../webfonts/fa-solid-900.woff2) format("woff2"),
-    url(../webfonts/fa-solid-900.woff) format("woff"),
-    url(../webfonts/fa-solid-900.ttf) format("truetype"),
-    url(../webfonts/fa-solid-900.svg#fontawesome) format("svg")
-}
-
-
 
 
 
