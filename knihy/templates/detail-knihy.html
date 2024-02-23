@@ -26,7 +26,11 @@
             <div>
                 <p>Hodnocení: {{ average_rating }}</p>
                 <p><strong>Napsal:</strong> <a class="fs-5" style="text-decoration: none;" href="{% url 'detail-autora' book.author.slug %}">{{ book.author }}</a></p>
-                <p><strong>Žánr:</strong> <a href="{% url 'zanr' book.genre.slug %}">{{ book.genre }}</a></p>
+                <p><strong>Žánry:</strong>
+                    {% for genre in book.genre.all %}
+                        <a href="{% url 'zanr' genre.slug %}">{{ genre }}</a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
                 <p><strong>Rok vydání:</strong> {{ book.publication_date }}</p>
                 <p><strong>ISBN:</strong> {{book.ISBN }}</p>
             </div>

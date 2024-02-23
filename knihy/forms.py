@@ -1,7 +1,15 @@
 from django import forms
-from .models import Book, Author
+from .models import Book, Author, Genre
+from django.core.exceptions import ValidationError
+
 
 class PostBookForm(forms.ModelForm):
+    # genre1 = forms.ModelChoiceField(queryset=Genre.objects.all(), empty_label="", widget=forms.Select(attrs={'class': 'form-control shadow-sm'}))
+    # genre2 = forms.ModelChoiceField(queryset=Genre.objects.all(), required=False, empty_label="", widget=forms.Select(attrs={'class': 'form-control shadow-sm'}))
+    # genre3 = forms.ModelChoiceField(queryset=Genre.objects.all(), required=False, empty_label="", widget=forms.Select(attrs={'class': 'form-control shadow-sm'}))
+    
+    
+
     class Meta:
         model = Book
         fields = ("title", "author", "genre", "publication_date", "ISBN", "summary", "cover_image")
@@ -10,7 +18,9 @@ class PostBookForm(forms.ModelForm):
         widgets = {
                 'title': forms.TextInput(attrs={'class': 'form-control shadow-sm'}),
                 'author': forms.Select(attrs={'class': 'form-control shadow-sm'}),
-                'genre': forms.Select(attrs={'class': 'form-control shadow-sm'}),
+                # 'genre': forms.Select(attrs={'class': 'form-control shadow-sm'}),
+                # 'genre': forms.CheckboxSelectMultiple(attrs={'class': 'list-unstyled'}),
+                'genre': forms.SelectMultiple(),
                 'publication_date': forms.DateInput(attrs={'class': 'form-control datepicker shadow-sm'}),
                 'ISBN': forms.TextInput(attrs={'class': 'form-control shadow-sm'}),
                 'summary': forms.Textarea(attrs={'class': 'form-control shadow-sm', 'rows': 4}),
@@ -26,6 +36,18 @@ class PostBookForm(forms.ModelForm):
             'summary': 'Souhrn',
             'cover_image': 'Obrázek obalu',
         }
+    
+    # def clean(self):
+    #     cleaned_data = super().clean()
+    #     genre1 = cleaned_data.get('genre1')
+    #     genre2 = cleaned_data.get('genre2')
+    #     genre3 = cleaned_data.get('genre3')
+
+    #     # Ensure genre1 is selected
+    #     if not genre1:
+    #         raise ValidationError({'genre1': 'This field is required.'})
+
+    #     return cleaned_data
 
 
 

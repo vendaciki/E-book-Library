@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 Žánr {{ genre.genre }}
@@ -11,7 +12,11 @@
     <ul class="zanr">
         {% for book in books %}
         <li>
-            <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+            {% if book.cover_image %}
+                <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+            {% else %}
+                <img src="{% static 'images/empty_cover.webp' %}" style="border-radius: 15px 0 0 15px;" alt="Prázdný obal">
+            {% endif %}
             <div>
                 <a href="{% url 'detail-knihy' book.slug %}">{{ book.title }} <br> {{ book.author }} <br> ({{ book.publication_date }})</a>
             </div>
