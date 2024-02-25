@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Smazat knihu {{ book.title }}
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_staff %}
+<h1 style="">Smazat knihu {{ book.title }}</h1>
+
+<div class="form-group">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <strong>Opravdu chceš knihu smazat?</strong>
+        <br>
+        <button type="submit" class="btn btn-primary">Smazat</button>
+    </form>
+</div>
+{% else %}
+<h1>Přístup odepřen.</h1>
+{% endif %}
+
+{% endblock %}

@@ -1,12 +1,13 @@
 from typing import Any
 from django.db.models.query import QuerySet
-from django.views.generic import ListView, CreateView, DetailView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, View
 from .models import Book, Author, Genre
 from .forms import PostBookForm, PostAuthorForm
 from django.urls import reverse_lazy
 from utils.google_books import get_review
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
+from django.http import JsonResponse
 
 
 class BooksView(ListView):
@@ -39,6 +40,15 @@ class AddBookView(CreateView):
             # Dynamically generate the success URL using self.object.id
             return reverse_lazy("detail-knihy", kwargs={'slug': self.object.slug})
         # success_url = reverse_lazy("knihy")
+    
+
+class AuthorAutocompleteView(View):
+    def get(self, request, *args, **kwargs):
+        query = self.request.GET.get("q")
+        qs = Author.objects.filter(last_name__istartswith=query)
+        authors = [{'id': author.id, 'label': f"{author.last_name} {author.first_name}", "value": f"{author.last_name} {author.first_name}"} for author in qs]
+        return JsonResponse(authors, safe=False)
+
 
 class BookDetailView(DetailView):
     model = Book
@@ -67,6 +77,21 @@ class UpdateBookDetail(UpdateView):
         # Dynamically generate the success URL using self.object.id
         return reverse_lazy("detail-knihy", kwargs={'slug': self.object.slug})
     # success_url = reverse_lazy("knihy")
+
+    def get_initial(self):
+        # Set initial values for the form
+        initial = super().get_initial()
+        author = self.object.author
+        # Concatenate first_name and last_name for author_search
+        initial['author_search'] = f"{author.first_name} {author.last_name}"
+        # Add other initial values if needed
+        return initial
+
+
+class DeleteBookDetailView(DeleteView):
+    model = Book
+    template_name = "smazat-knihu.html"
+    success_url = reverse_lazy("home")
 
 
 class SearchView(ListView):
@@ -121,7 +146,7 @@ class AddAuthorView(CreateView):
     form_class = PostAuthorForm
     template_name = "pridat-autora.html"
 
-    success_url = reverse_lazy("knihy")
+    success_url = reverse_lazy("home")
 
 
 class AuthorDetailView(DetailView):
@@ -194,6 +219,36 @@ class AuthorsByCharView(ListView):
         char = self.kwargs.get('char')
         return Author.objects.filter(last_name__istartswith=char).order_by('last_name')
 
+
+class BooksByCharView(ListView):
+    template_name = "vsechny-knihy-abecedne.html"
+    context_object_name = "filtered_books"
+    model = Book
+    paginate_by = 35
+
+    def get_queryset(self):
+        char = self.kwargs.get("char")
+        return Book.objects.filter(title__istartswith=char).order_by("title")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        selected_char = self.kwargs.get("char")
+        context["selected_char"] = selected_char
+        filtered_books = self.get_queryset()
+
+        # Use pagination
+        paginator = Paginator(filtered_books, self.paginate_by)
+        page = self.request.GET.get('page')
+
+        try:
+            context["all_books"] = paginator.page(page)
+        except PageNotAnInteger:
+            context["all_books"] = paginator.page(1)
+        except EmptyPage:
+            context["all_books"] = paginator.page(paginator.num_pages)
+
+        return context
+    
 
 class GenreDetailView(DetailView):
     model = Genre

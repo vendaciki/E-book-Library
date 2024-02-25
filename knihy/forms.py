@@ -3,24 +3,26 @@ from .models import Book, Author, Genre
 from django.core.exceptions import ValidationError
 
 
+
 class PostBookForm(forms.ModelForm):
     # genre1 = forms.ModelChoiceField(queryset=Genre.objects.all(), empty_label="", widget=forms.Select(attrs={'class': 'form-control shadow-sm'}))
     # genre2 = forms.ModelChoiceField(queryset=Genre.objects.all(), required=False, empty_label="", widget=forms.Select(attrs={'class': 'form-control shadow-sm'}))
     # genre3 = forms.ModelChoiceField(queryset=Genre.objects.all(), required=False, empty_label="", widget=forms.Select(attrs={'class': 'form-control shadow-sm'}))
     
     
+    author_search = forms.CharField(label='Autor', widget=forms.TextInput(attrs={"class": "form-control shadow-sm"}))
 
     class Meta:
         model = Book
-        fields = ("title", "author", "genre", "publication_date", "ISBN", "summary", "cover_image")
+        fields = ("title", "author_search", "author", "genre", "publication_date", "ISBN", "summary", "cover_image")
     
     # přidávám class, se kterou pracuji v CSS; stejně tak můžu přidat jakýkoliv jiný parametr
         widgets = {
                 'title': forms.TextInput(attrs={'class': 'form-control shadow-sm'}),
-                'author': forms.Select(attrs={'class': 'form-control shadow-sm'}),
+                'author': forms.HiddenInput(),
                 # 'genre': forms.Select(attrs={'class': 'form-control shadow-sm'}),
-                # 'genre': forms.CheckboxSelectMultiple(attrs={'class': 'list-unstyled'}),
-                'genre': forms.SelectMultiple(),
+                'genre': forms.CheckboxSelectMultiple(attrs={'class': 'list-unstyled'}),
+                # 'genre': forms.SelectMultiple(),
                 'publication_date': forms.DateInput(attrs={'class': 'form-control datepicker shadow-sm'}),
                 'ISBN': forms.TextInput(attrs={'class': 'form-control shadow-sm'}),
                 'summary': forms.Textarea(attrs={'class': 'form-control shadow-sm', 'rows': 4}),
@@ -29,7 +31,6 @@ class PostBookForm(forms.ModelForm):
         
         labels = {
             'title': 'Název',
-            'author': 'Autor',
             'genre': 'Žánr',
             'publication_date': 'Datum vydání',
             'ISBN': 'ISBN',

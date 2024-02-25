@@ -11,7 +11,45 @@
         <form method="post" action="{% url 'pridat-knihu' %}" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
+
+            <!-- Include jQuery and jQuery UI stylesheets -->
+            <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+            <!-- Include jQuery library -->
+            <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+            <!-- Include jQuery UI library -->
+            <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+            
+            <script>
+                $( function() {
+                    $( "#id_author_search" ).autocomplete({
+                        minLength: 2,
+                        source: function(request, response) {
+                            $.ajax({
+                                url: "{% url 'author-autocomplete' %}",
+                                dataType: "json",
+                                data: {
+                                    q: request.term
+                                },
+                                success: function(data) {
+                                    response(data);
+                                }
+                            });
+                        },
+                        select: function (event, ui) {
+                            // Set the displayed text to the author's last name
+                            $("#id_author").val(ui.item.id);
+                            
+                            // Set the actual value to the author's ID
+                            $("#id_author_search").val(ui.item.label);
+        
+                            return false; // Prevent the default behavior
+                        }
+                    });
+                } );
+            </script>
+
             <button type="submit" class="btn btn-primary">Přidat</button>
         </form>
     </div>
+
 {% endblock content %}

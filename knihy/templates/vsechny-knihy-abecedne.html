@@ -5,22 +5,25 @@
 Seznam všech knih
 {% endblock %}
 
+
 {% block content %}
-<h1>Seznam všech knih podle abecedy</h1>
+<h1>Abecední přehled všech knih - písmeno {{ selected_char }}</h1>
 
 <div class="abeceda-autoru">
-    <ul>
-        {% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ'%}
+    <ul>{% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ'%}
         <li style="list-style-type: none; padding: 10px;">
             <a href="{% url 'vsechny-knihy-abecedne' char %}">{{ char }}</a>
         </li>
+        {% endfor %} 
     </ul>  
-    {% endfor %}  
+     
 </div>    
+
+
 
 <div class="all-books police2">
     <ul>
-        {% for book in object_list %}
+        {% for book in filtered_books %}
         <li class="ten-books">
             <a href="{% url 'detail-knihy' book.slug %}">
                 {% if book.cover_image %}
@@ -34,6 +37,7 @@ Seznam všech knih
         {% endfor %}
     </ul>
 </div>
+{% if all_books.paginator.num_pages > 1%}
     <div class="pagination">
         <span class="step-links">
             {% if all_books.has_previous %}
@@ -51,5 +55,7 @@ Seznam všech knih
             {% endif %}
         </span>
     </div>
+{% endif %}
+
 
 {% endblock %}

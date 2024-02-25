@@ -14,5 +14,5 @@ def strip_image_tags(value):
     for p_tag in p:
         if "img src" in p_tag.text:
             p_tag.extract()
-    print(p)
+    # print(p)
     return soup
