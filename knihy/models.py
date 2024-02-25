@@ -52,6 +52,7 @@ class Book(models.Model):
     summary = models.TextField()
     cover_image = models.ImageField(upload_to="book_covers/", null=True, blank=True)
     slug = models.SlugField(default="", null=False, db_index=True) # Harry Potter 1 => harry-potter-1
+    hodnoceni = models.IntegerField(null=True, blank=True)
     
 
     def __str__(self):

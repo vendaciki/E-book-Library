@@ -27,7 +27,12 @@
 
         <div class="info-knih">
             <div>
-                <p>Hodnocení: {{ average_rating }}</p>
+                {% comment %} {% if not book.hodnoceni %}
+                    <p>Hodnocení: {{ average_rating }}</p>
+                {% else %}
+                    <p>Hodnocení: {{ book.hodnoceni }}</p>
+                {% endif %} {% endcomment %}
+                <p> <strong>Hodnocení:</strong> {{ book.hodnoceni }} %</p>
                 <p><strong>Napsal:</strong> <a class="fs-5" style="text-decoration: none;" href="{% url 'detail-autora' book.author.slug %}">{{ book.author }}</a></p>
                 <p><strong>Žánry:</strong>
                     {% for genre in book.genre.all %}
