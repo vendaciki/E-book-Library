@@ -45,7 +45,7 @@ class AddBookView(CreateView):
 class AuthorAutocompleteView(View):
     def get(self, request, *args, **kwargs):
         query = self.request.GET.get("q")
-        qs = Author.objects.filter(last_name__istartswith=query)
+        qs = Author.objects.filter(last_name__istartswith=query)[:20]
         authors = [{'id': author.id, 'label': f"{author.last_name} {author.first_name}", "value": f"{author.last_name} {author.first_name}"} for author in qs]
         return JsonResponse(authors, safe=False)
 

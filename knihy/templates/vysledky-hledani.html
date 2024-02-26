@@ -7,8 +7,9 @@
 {% block content %}
 <h1>Výsledky hledání pro "{{ query }}"</h1>
 
-{% if books %}
+
 <div class="vysledky">
+    {% if books %}
     <section class="vysl-knih">
         <h3>Knihy:</h3>
         <ul>
@@ -24,11 +25,9 @@
             {% endfor %}
         </ul>
     </section>
+    {% endif %}
 
-{% endif %}
-
-{% if authors %}
-
+    {% if authors %}
     <section class="vysl-autoru">
         <h3>Autoři:</h3>
         <ul>
@@ -39,7 +38,8 @@
             {% endfor %}
         </ul>
     </section>
+    {% endif %}
 </div>
-{% endif %}
+    
 
 {% endblock %}

@@ -53,12 +53,27 @@
 
         <div class="hodnoceni">
             <p> <strong>Hodnocení:</strong> {{ book.hodnoceni }} %</p>
-            <div class="star-rating" data-rating="84">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9734;</span>
+            <div class="star-rating" data-rating="{{ book.hodnoceni}}">
+                <script>
+                    var rating = {{ book.hodnoceni }};
+                    var starsContainer = document.querySelector('.star-rating');
+        
+                    var filledStars = Math.round((rating / 100) * 5);
+        
+                    for (var i = 0; i < filledStars; i++) {
+                        var filledStar = document.createElement('span');
+                        filledStar.className = 'star filled-star';
+                        filledStar.innerHTML = '&#9733;';
+                        starsContainer.appendChild(filledStar);
+                    }
+        
+                    for (var i = filledStars; i < 5; i++) {
+                        var emptyStar = document.createElement('span');
+                        emptyStar.className = 'star';
+                        emptyStar.innerHTML = '&#9734;';
+                        starsContainer.appendChild(emptyStar);
+                    }
+                </script>
             </div>
         </div>
 

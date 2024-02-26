@@ -14,7 +14,7 @@ class Author(models.Model):
     slug = models.SlugField(max_length=50, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.last_name} {self.first_name}"
+        return f"{self.first_name} {self.last_name}"
     
     def save(self, *args, **kwargs):
         self.slug = slugify(f"{self.first_name} {self.last_name}")
@@ -52,7 +52,7 @@ class Book(models.Model):
     summary = models.TextField()
     cover_image = models.ImageField(upload_to="book_covers/", null=True, blank=True)
     slug = models.SlugField(default="", null=False, db_index=True) # Harry Potter 1 => harry-potter-1
-    hodnoceni = models.IntegerField(null=True, blank=True)
+    hodnoceni = models.IntegerField(null=True, blank=True, default=0)
     
 
     def __str__(self):

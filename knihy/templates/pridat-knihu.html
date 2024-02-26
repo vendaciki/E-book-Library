@@ -22,7 +22,7 @@
             <script>
                 $( function() {
                     $( "#id_author_search" ).autocomplete({
-                        minLength: 2,
+                        minLength: 1,
                         source: function(request, response) {
                             $.ajax({
                                 url: "{% url 'author-autocomplete' %}",

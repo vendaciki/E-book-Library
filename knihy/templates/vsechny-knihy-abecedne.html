@@ -10,7 +10,11 @@ Seznam všech knih
 <h1>Abecední přehled všech knih - písmeno {{ selected_char }}</h1>
 
 <div class="abeceda-autoru">
-    <ul>{% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ'%}
+    <ul>
+        <li>
+            <a href="{% url 'vsechny-knihy' %}">Všechny knihy</a>
+        </li>
+        {% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ'%}
         <li>
             <a href="{% url 'vsechny-knihy-abecedne' char %}">{{ char }}</a>
         </li>

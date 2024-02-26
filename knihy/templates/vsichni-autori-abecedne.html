@@ -8,12 +8,17 @@ Seznam všech autorů
 <h1>Abecední přehled spisovatelů - písmeno {{ selected_char }}</h1>
 
 <div class="abeceda-autoru">
-    <ul>{% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ'%}
+    <ul>
+        <li>
+            <a href="{% url 'vsichni-autori' %}">Všichni autoři</a>
+        </li>
+        {% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ'%}
         <li>
             <a href="{% url 'vsichni-autori-abecedne' char %}">{{ char }}</a>
         </li>
+        {% endfor %} 
     </ul>  
-    {% endfor %}  
+     
 </div>    
 
 <div class="abc-authors">

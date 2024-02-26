@@ -10,7 +10,7 @@ class PostBookForm(forms.ModelForm):
     # genre3 = forms.ModelChoiceField(queryset=Genre.objects.all(), required=False, empty_label="", widget=forms.Select(attrs={'class': 'form-control shadow-sm'}))
     
     
-    author_search = forms.CharField(label='Autor', widget=forms.TextInput(attrs={"class": "form-control shadow-sm"}))
+    author_search = forms.CharField(label='Autor', widget=forms.TextInput(attrs={"class": "form-control shadow-sm", "placeholder": "Zadej příjmení..."}))
 
     class Meta:
         model = Book
@@ -57,7 +57,7 @@ class PostBookForm(forms.ModelForm):
 class PostAuthorForm(forms.ModelForm):
     class Meta:
         model = Author
-        fields = "__all__"
+        fields = ("first_name", "last_name")
 
     # přidávám class, se kterou pracuji v CSS; stejně tak můžu přidat jakýkoliv jiný parametr
         widgets = {
