@@ -11,7 +11,7 @@ Seznam všech knih
 <div class="abeceda-autoru">
     <ul>
         {% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ'%}
-        <li style="list-style-type: none; padding: 10px;">
+        <li>
             <a href="{% url 'vsechny-knihy-abecedne' char %}">{{ char }}</a>
         </li>
     </ul>  
@@ -34,22 +34,23 @@ Seznam všech knih
         {% endfor %}
     </ul>
 </div>
-    <div class="pagination">
-        <span class="step-links">
-            {% if all_books.has_previous %}
-                <a href="?page=1">&laquo; první</a>
-                <a href="?page={{ all_books.previous_page_number }}">předešlá</a>
-            {% endif %}
 
-            <span class="current">
-                Stránka {{ all_books.number }} z {{ all_books.paginator.num_pages }}
-            </span>
+<div class="pagination">
+    <span class="step-links">
+        {% if all_books.has_previous %}
+            <a href="?page=1">&laquo; první</a>
+            <a href="?page={{ all_books.previous_page_number }}">předešlá</a>
+        {% endif %}
 
-            {% if all_books.has_next %}
-                <a href="?page={{ all_books.next_page_number }}">další</a>
-                <a href="?page={{ all_books.paginator.num_pages }}">poslední &raquo;</a>
-            {% endif %}
+        <span class="current">
+            Stránka {{ all_books.number }} z {{ all_books.paginator.num_pages }}
         </span>
-    </div>
+
+        {% if all_books.has_next %}
+            <a href="?page={{ all_books.next_page_number }}">další</a>
+            <a href="?page={{ all_books.paginator.num_pages }}">poslední &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 
 {% endblock %}

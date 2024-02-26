@@ -11,7 +11,7 @@ Seznam všech knih
 
 <div class="abeceda-autoru">
     <ul>{% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ'%}
-        <li style="list-style-type: none; padding: 10px;">
+        <li>
             <a href="{% url 'vsechny-knihy-abecedne' char %}">{{ char }}</a>
         </li>
         {% endfor %} 

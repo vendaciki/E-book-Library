@@ -9,44 +9,61 @@
 
 <div class="name-book">
     <h1>{{ book.title }}</h1>
-    {% if user.is_authenticated %}
-        <a href="{% url 'upravit-knihu' book.slug %}">Upravit knihu</a>
-    {% endif %}
-    {% if user.is_staff %}
-        <a href="{% url 'smazat-knihu' book.slug %}">Smazat knihu</a>
-    {% endif %}
+    <div>
+        {% if user.is_authenticated %}
+            <a href="{% url 'upravit-knihu' book.slug %}">Upravit knihu</a>
+        {% endif %}
+        {% if user.is_staff %}
+            <a href="{% url 'smazat-knihu' book.slug %}">Smazat knihu</a>
+        {% endif %}
+    </div>
 </div>
 
 <div class="kniha">
     <div class="obsah-knih">
-        {% if book.cover_image %}
-            <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
-        {% else %}
-        <img src="{% static 'images/empty_cover.webp' %}" style="border-radius: 15px 0 0 15px;" alt="Prázdný obal">
-        {% endif %}
+        <div style="display: flex; flex-wrap: wrap;">
+            {% if book.cover_image %}
+                <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+            {% else %}
+            <img src="{% static 'images/empty_cover.webp' %}" style="border-radius: 15px 0 0 15px;" alt="Prázdný obal">
+            {% endif %}
 
-        <div class="info-knih">
-            <div>
-                {% comment %} {% if not book.hodnoceni %}
-                    <p>Hodnocení: {{ average_rating }}</p>
-                {% else %}
-                    <p>Hodnocení: {{ book.hodnoceni }}</p>
-                {% endif %} {% endcomment %}
-                <p> <strong>Hodnocení:</strong> {{ book.hodnoceni }} %</p>
-                <p><strong>Napsal:</strong> <a class="fs-5" style="text-decoration: none;" href="{% url 'detail-autora' book.author.slug %}">{{ book.author }}</a></p>
-                <p><strong>Žánry:</strong>
-                    {% for genre in book.genre.all %}
-                        <a href="{% url 'zanr' genre.slug %}">{{ genre }}</a>{% if not forloop.last %}, {% endif %}
-                    {% endfor %}
-                </p>
-                <p><strong>Rok vydání:</strong> {{ book.publication_date }}</p>
-                <p><strong>ISBN:</strong> {{book.ISBN }}</p>
-            </div>
-            <div style="width: 100%;">
-                <a {% comment %}href="{% url 'stahnout-knihu' %}"{% endcomment %}><button type="button" class="btn btn-primary">Stáhnout ePub</button></a> 
+        
+            <div class="info-knih">
+                <div>
+                    {% comment %} {% if not book.hodnoceni %}
+                        <p>Hodnocení: {{ average_rating }}</p>
+                    {% else %}
+                        <p>Hodnocení: {{ book.hodnoceni }}</p>
+                    {% endif %} {% endcomment %}
+                    <p><strong>Napsal:</strong> <a class="fs-5" style="text-decoration: none;" href="{% url 'detail-autora' book.author.slug %}">{{ book.author }}</a></p>
+                    <p><strong>Žánry:</strong>
+                        {% for genre in book.genre.all %}
+                            <a href="{% url 'zanr' genre.slug %}">{{ genre }}</a>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                    <p><strong>Rok vydání:</strong> {{ book.publication_date }}</p>
+                    <p><strong>ISBN:</strong> {{book.ISBN }}</p>
+                </div>
+                <div style="width: 100%;">
+                    <a {% comment %}href="{% url 'stahnout-knihu' %}"{% endcomment %}><button type="button" class="btn btn-primary">Stáhnout ePub</button></a> 
+                </div>
             </div>
         </div>
+
+        <div class="hodnoceni">
+            <p> <strong>Hodnocení:</strong> {{ book.hodnoceni }} %</p>
+            <div class="star-rating" data-rating="84">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+            </div>
+        </div>
+
     </div>
+
     <div>
         <p><h5>Popis:</h5> {{ book.summary|safe }}</p>
     </div>
