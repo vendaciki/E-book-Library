@@ -309,11 +309,7 @@ h1::after {
     margin: 30px auto 0;
 }
 
-.author-books ul {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-
-.all-books ul {
+.all-books ul, .author-books ul {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
