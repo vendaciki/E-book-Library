@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django import forms
 
@@ -21,3 +21,11 @@ class SignUpForm(UserCreationForm):
         self.fields["password2"].widget.attrs["class"] = "form-control"
 
 
+class EditProfileForm(UserChangeForm):
+    # email = forms.EmailField(label="E-mail", widget=forms.EmailInput(attrs={"class":"form-control"}))
+    # first_name = forms.CharField(max_length=100, label="Křestní jméno", widget=forms.TextInput(attrs={"class":"form-control"}))
+    # last_name = forms.CharField(max_length=100, label="Příjmení", widget=forms.TextInput(attrs={"class":"form-control"}))
+
+    class Meta:
+        model = User
+        fields = "__all__"
