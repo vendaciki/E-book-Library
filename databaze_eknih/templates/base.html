@@ -59,6 +59,9 @@
                     {% if user.is_authenticated %}
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
+                            <a href="{% url 'upravit-profil' %}" class="nav-link">Upravit profil</a>
+                        </li>
+                        <li class="nav-item">
                             <!-- bezpečnostní ověření při odhlášení, bez něj to nefunguje -->
                             <form method="post" action="{% url 'logout' %}">
                                 {% csrf_token %}
