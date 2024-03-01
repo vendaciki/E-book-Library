@@ -10,13 +10,16 @@ Seznam všech knih
 
 <div class="abeceda-autoru">
     <ul>
-        {% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ'%}
+        <li>
+            <a href="{% url 'vsechny-knihy' %}" class="active">#</a>
+        </li>
+        {% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ' %}
         <li>
             <a href="{% url 'vsechny-knihy-abecedne' char %}">{{ char }}</a>
         </li>
+        {% endfor %}
     </ul>  
-    {% endfor %}  
-</div>    
+</div>
 
 <div class="all-books police2">
     <ul>

@@ -9,13 +9,16 @@ Seznam všech autorů
 
 <div class="abeceda-autoru">
     <ul>
-        {% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ'%}
+        <li>
+            <a href="{% url 'vsichni-autori' %}" class="active">#</a>
+        </li>
+        {% for char in 'ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ' %}
         <li>
             <a href="{% url 'vsichni-autori-abecedne' char %}">{{ char }}</a>
         </li>
+        {% endfor %}
     </ul>  
-    {% endfor %}  
-</div>    
+</div>
 
 <div class="abc-authors">
     {% for author in all_authors %}

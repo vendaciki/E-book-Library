@@ -68,6 +68,10 @@ form {
     width: auto;
 }
 
+.nav-item a {
+    color: #ffffff;
+}
+
 .nav-item a:hover, .text-light:hover, .fab:hover, .fa:hover, .abc-authors a:hover {
     color: rgb(233, 30, 99)!important;
 }
@@ -261,6 +265,11 @@ ul {
     text-align: center;
     color: black;
     cursor: default;
+}
+
+.active {
+    color: rgb(233, 30, 99)!important;
+    font-weight: bold;
 }
 
 h2 {
