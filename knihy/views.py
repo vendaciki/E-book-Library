@@ -7,7 +7,8 @@ from django.urls import reverse_lazy
 from utils.google_books import get_review
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+from django.shortcuts import get_object_or_404
 
 
 class BooksView(ListView):
@@ -36,9 +37,14 @@ class AddBookView(CreateView):
     form_class = PostBookForm
     template_name = "pridat-knihu.html"
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['request'] = self.request  # Pass the request object to the form
+        return kwargs
+
     def get_success_url(self):
-            # Dynamically generate the success URL using self.object.id
-            return reverse_lazy("detail-knihy", kwargs={'slug': self.object.slug})
+        # Dynamically generate the success URL using self.object.id
+        return reverse_lazy("detail-knihy", kwargs={'slug': self.object.slug})
         # success_url = reverse_lazy("knihy")
     
 
@@ -66,12 +72,28 @@ class BookDetailView(DetailView):
         context['ratings_count'] = ratings_count
         print(average_rating)
         return context
+
+
+class DownloadEpubView(View):
+    def get(self, request, slug):
+        book = get_object_or_404(Book, slug=slug)
+        original_file_name = book.epub_file.name
+        response = HttpResponse(book.epub_file.read(), content_type='application/epub+zip')
+        response['Content-Disposition'] = f'attachment; filename={original_file_name}'
+        return response
+
     
 
 class UpdateBookDetail(UpdateView):
     model = Book
     form_class = PostBookForm
     template_name = "upravit-knihu.html"
+
+    # opravňuje admina k editaci PostBookForm pro epub
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['request'] = self.request  # Pass the request object to the form
+        return kwargs
 
     def get_success_url(self):
         # Dynamically generate the success URL using self.object.id

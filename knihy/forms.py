@@ -11,10 +11,20 @@ class PostBookForm(forms.ModelForm):
     
     
     author_search = forms.CharField(label='Autor', widget=forms.TextInput(attrs={"class": "form-control shadow-sm", "placeholder": "Zadej příjmení..."}))
+    # epub_file = forms.ClearableFileInput(attrs={'class': 'form-control-file'})
+
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request', None)
+        super().__init__(*args, **kwargs)
+
+        # Check if the user is an admin
+        if not (self.request and self.request.user.is_staff):
+            # If not an admin, hide the epub_file field
+            self.fields['epub_file'].widget = forms.HiddenInput()
 
     class Meta:
         model = Book
-        fields = ("title", "author_search", "author", "genre", "publication_date", "ISBN", "summary", "cover_image")
+        fields = ("title", "author_search", "author", "genre", "publication_date", "ISBN", "summary", "cover_image", "epub_file")
     
     # přidávám class, se kterou pracuji v CSS; stejně tak můžu přidat jakýkoliv jiný parametr
         widgets = {
@@ -27,6 +37,7 @@ class PostBookForm(forms.ModelForm):
                 'ISBN': forms.TextInput(attrs={'class': 'form-control shadow-sm'}),
                 'summary': forms.Textarea(attrs={'class': 'form-control shadow-sm', 'rows': 4}),
                 'cover_image': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
+                'epub_file': forms.ClearableFileInput(attrs={'class': 'form-control-file'})
             }
         
         labels = {
@@ -36,23 +47,9 @@ class PostBookForm(forms.ModelForm):
             'ISBN': 'ISBN',
             'summary': 'Souhrn',
             'cover_image': 'Obrázek obalu',
+            'epub_file': 'E-kniha v EPUB formátu',
         }
     
-    # def clean(self):
-    #     cleaned_data = super().clean()
-    #     genre1 = cleaned_data.get('genre1')
-    #     genre2 = cleaned_data.get('genre2')
-    #     genre3 = cleaned_data.get('genre3')
-
-    #     # Ensure genre1 is selected
-    #     if not genre1:
-    #         raise ValidationError({'genre1': 'This field is required.'})
-
-    #     return cleaned_data
-
-
-
-
 
 class PostAuthorForm(forms.ModelForm):
     class Meta:

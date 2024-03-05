@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import BooksView, AddBookView, BookDetailView, UpdateBookDetail, SearchView, AddAuthorView, AuthorDetailView, AllBooksView, AllAuthorsView, GenreDetailView
-from .views import AuthorsByCharView, BooksByCharView ,DeleteBookDetailView, AuthorAutocompleteView
+from .views import AuthorsByCharView, BooksByCharView ,DeleteBookDetailView, AuthorAutocompleteView, DownloadEpubView
 
 urlpatterns = [
     path("", BooksView.as_view(), name="home"),
@@ -16,6 +16,7 @@ urlpatterns = [
     path("autori-abecedne-<str:char>", AuthorsByCharView.as_view(), name="vsichni-autori-abecedne"),
     path("knihy-abecedne-<str:char>", BooksByCharView.as_view(), name="vsechny-knihy-abecedne"),
     path("zanr-<slug:slug>", GenreDetailView.as_view(), name="zanr"),
-    path("author-autocomplete/", AuthorAutocompleteView.as_view(), name="author-autocomplete")
+    path("author-autocomplete/", AuthorAutocompleteView.as_view(), name="author-autocomplete"),
+    path("stahnout-knihu/<slug:slug>", DownloadEpubView.as_view(), name="stahnout-knihu"),
     ]
 
