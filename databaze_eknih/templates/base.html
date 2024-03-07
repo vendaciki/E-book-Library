@@ -6,7 +6,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <meta name="description" content="Databáze knih">
+        <meta name="description" content="Databáze E-knih">
         <link rel="icon" type="image/x-icon" href="{% static 'images/logo.webp' %}">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -16,7 +16,7 @@
         <!-- pokud se title nevytvoří dynamicky, bude mít hodnotu MW Knižní databáze-->
         <title>
             {% block title %}
-            MW Knižní databáze
+            MW E-Knižní databáze
             {% endblock %}
         </title>
 
@@ -29,7 +29,7 @@
         <nav class="navbar border-bottom border-body navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand text-white fs-2" href="{% url "home" %}">
-                    <img class="logo" src="../../static/images/logo.webp"> MW Knižní databáze
+                    <img class="logo" src="../../static/images/logo.webp"> MW E-Knižní databáze
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
