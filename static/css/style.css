@@ -128,7 +128,6 @@ form .control {
 
 .articles li {
     width: 100%;
-    border: 1px solid #9387f5;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 5px #6253da;
@@ -201,7 +200,6 @@ small {
 .hodnoceni p {
     margin-bottom: auto;
     border-radius: 10px;
-    border: 1px solid #9387f5;
     box-shadow: 0px 0px 5px #6253da;
     padding: 10px 20px;
 }
@@ -247,7 +245,8 @@ ul {
     flex-wrap: wrap;
     justify-content: space-around;
     width: 100%;
-    margin: 20px auto;
+    padding: 20px;
+    border-radius: 0;
 }
 
 .kniha {
@@ -350,12 +349,16 @@ h1::after {
 }
 
 .authors, .books, .genre {
-    box-shadow: 0px 0px 5px 0px #6253da;
     padding: 15px;
 }
 
 .new-author, .ten-authors {
     width: 100%;
+}
+
+.authors, .books, .genre, .genre li, .articles li, .hodnoceni p, .pridat-btn {
+    border: 1px solid #9387f5;
+    box-shadow: 0px 0px 5px 0px #6253da;
 }
 
 .autori {
@@ -368,8 +371,7 @@ h1::after {
 .authors {
     display: flex;
     flex-wrap: wrap;
-    border-radius: 0 10px 10px 0;
-    border: 1px solid #9387f5;
+    border-radius: 0 10px 0 0;
 }
 
 .new-author {
@@ -391,7 +393,6 @@ h1::after {
     display: flex;
     flex-wrap: wrap;
     width: 70%;
-    border: 1px solid #9387f5;
 }
 
 .books {
@@ -400,17 +401,17 @@ h1::after {
 
 .genre {
     border-radius: 0 0 10px 10px;
+    width: 100%;
 }
 
 .genre ul {
-    text-align: center;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .genre li {
     padding: 5px 15px;
-    border: 1px solid #9387f5;
     box-shadow: 0px 0px 9px #6253da;
     border-radius: 8%;
     margin: 10px;
@@ -750,11 +751,11 @@ footer {
     }
 
     .authors {
-        border-radius: 0 0 10px 10px;
+        border-radius: 0;
     }
 
     .genre {
-        border-radius: 10px;
+        border-radius: 0 0 10px 10px;
     }
 
     .pagination {
