@@ -1,3 +1,7 @@
+body {
+    cursor: default;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
