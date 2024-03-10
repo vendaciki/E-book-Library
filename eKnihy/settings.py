@@ -23,8 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%5**z45d7ps66-o(74^_plx5w2-^^0_t8!5!q84v=(*ib!7g2q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# python manage.py runserver 127.0.0.1:8000
+# DEBUG = False
+# ALLOWED_HOSTS = ["127.0.0.1"]
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -59,7 +61,9 @@ ROOT_URLCONF = 'eKnihy.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR /  "eKnihy" /"templates"
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

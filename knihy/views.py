@@ -8,7 +8,7 @@ from utils.google_books import get_review
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 
 
 class BooksView(ListView):
@@ -169,6 +169,17 @@ class AddAuthorView(CreateView):
     template_name = "pridat-autora.html"
 
     success_url = reverse_lazy("home")
+
+    def form_valid(self, form):
+        first_name = form.cleaned_data['first_name']
+        last_name = form.cleaned_data['last_name']
+
+        existing_author = Author.objects.filter(first_name=first_name, last_name=last_name).first()
+
+        if existing_author:
+            return render(self.request, self.template_name, {'form': form, 'error_message': 'Autor už existuje.'})
+        else:
+            return super().form_valid(form)
 
 
 class AuthorDetailView(DetailView):

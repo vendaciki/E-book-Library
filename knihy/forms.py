@@ -66,3 +66,11 @@ class PostAuthorForm(forms.ModelForm):
             'first_name': 'Jméno',
             'last_name': 'Příjmení',
         }
+    
+    def clean_first_name(self):
+        # Capitalize the first letter of the first name
+        return self.cleaned_data['first_name'].capitalize()
+
+    def clean_last_name(self):
+        # Capitalize the first letter of the last name
+        return self.cleaned_data['last_name'].capitalize()
