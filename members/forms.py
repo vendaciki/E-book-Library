@@ -2,6 +2,8 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Authenti
 from django.contrib.auth.models import User
 from django import forms
 from django.utils.safestring import mark_safe
+from django.core.exceptions import ValidationError
+from django.forms.widgets import DateInput
 
 
 class SignUpForm(UserCreationForm):
@@ -20,6 +22,13 @@ class SignUpForm(UserCreationForm):
         self.fields["username"].widget.attrs["class"] = "form-control"
         self.fields["password1"].widget.attrs["class"] = "form-control"
         self.fields["password2"].widget.attrs["class"] = "form-control"
+    
+
+    def clean(self):
+        email = self.cleaned_data.get("email")
+        if User.objects.filter(email=email).exists():
+            raise ValidationError(f"Tento email {email} už je zaregistrován.")
+        return self.cleaned_data
 
 
 class LoginForm(AuthenticationForm):
@@ -71,13 +80,13 @@ class EditProfileForm(UserChangeForm):
             raise forms.ValidationError(f"Změna tady není povolena.")
         return new_value
 
-    # Then you call this method for each field you want to validate
+
     def clean_username(self):
         return self.clean_field('username')
 
-    def clean_date_joined(self):
-        return self.clean_field('date_joined')
-
+    # def clean_date_joined(self):
+    #     return self.clean_field('date_joined')
+    
 
 class PasswordsChangeForm(PasswordChangeForm):
     # old_password = forms.CharField(
