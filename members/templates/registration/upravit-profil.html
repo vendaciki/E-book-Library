@@ -11,10 +11,15 @@
 <h1>
     Upravit profil
 </h1>
-<div class="form-group">
+<div class="form-group upravit-profil">
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
+        <p>
+            <label>Heslo:</label>
+            <input type="text" value="skryto" class="form-control readonly" maxlength="100" readonly>
+        </p>
+        <p>Heslo můžeš změnit pomocí <a href="{% url 'password' %}">tohoto formuláře</a>.</p>
         <button class="btn btn-primary">Upravit</button>
 </div>
 

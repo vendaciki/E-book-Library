@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+    Změnit heslo
+{% endblock %}
+{% block content %}
+
+<h1>
+    Změna hesla
+</h1>
+<div class="form-group">
+    <form class="zmenit-heslo" method="POST">
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <button class="btn btn-primary">Změnit heslo</button>
+</div>
+
+{% endblock %}

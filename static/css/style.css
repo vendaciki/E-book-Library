@@ -59,6 +59,14 @@ section ul {
     width: 20%;
 }
 
+.zmenit-heslo .form-control {
+    width: 40%;
+}
+
+.upravit-profil .form-control {
+    width: 50%;
+}
+
 form {
     width: 50%;
 }
@@ -115,6 +123,20 @@ form .control {
     border-radius: 10px 0 0 10px;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+.form-control.readonly {
+    background-color: #cac6c6;
+    cursor: not-allowed;
+}
+
+form .form-control.readonly:focus {
+    background-color: #cac6c6 !important;
+    cursor: not-allowed !important;
+    border-color: var(--bs-body-bg);
+    box-shadow: 0 0 0 var(--bs-body-bg) inset, 0 0 0 var(--bs-body-bg);
+    outline: 0 none !important;
+}
+
 
 .article {
     display: flex;

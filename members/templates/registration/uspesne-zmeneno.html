@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+    Změna proběhla v pořádku
+{% endblock %}
+{% block content %}
+<h2>
+    Údaje úspěšně změněny.
+</h2>
+
+<script>
+    function redirectHome() {
+        setTimeout(function() {
+            window.location.href = "{% url 'home' %}";
+        }, 2000);
+    }
+
+    window.onload = function() {
+        redirectHome();
+    };
+
+</script>
+
+{% endblock %}

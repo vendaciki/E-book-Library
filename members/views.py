@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from django.views import generic
-from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.urls import reverse_lazy
-from .forms import SignUpForm, EditProfileForm, LoginForm
+from .forms import SignUpForm, EditProfileForm, LoginForm, PasswordsChangeForm
+
+
+def redirect_view(request):
+    return render(request, "registration/uspesne-zmeneno.html")
 
 
 class UserRegisterView(generic.CreateView):
@@ -21,7 +25,13 @@ class UserLoginView(LoginView):
 class UserEditView(generic.UpdateView):
     form_class = EditProfileForm
     template_name = "registration/upravit-profil.html"
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("uspesne-zmeneno")
 
     def get_object(self):
         return self.request.user
+
+
+class PasswordsChangeView(PasswordChangeView):
+    form_class = PasswordsChangeForm
+    template_name = "registration/zmenit-heslo.html"
+    success_url = reverse_lazy("uspesne-zmeneno")

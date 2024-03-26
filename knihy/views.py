@@ -150,9 +150,24 @@ class SearchView(ListView):
         book_results = Book.objects.filter(
             title__icontains=query
         )
-        author_results = Author.objects.filter(
-            Q(first_name__icontains=query) | Q(last_name__icontains=query)
-        )
+        # author_results = Author.objects.filter(
+        #         Q(first_name__icontains=query) | Q(last_name__icontains=query)
+        #     )
+        if " " in query and len(query.split()) > 1:
+            try:
+                author_results = Author.objects.filter(
+                    Q(first_name__icontains=query) | Q(last_name__icontains=query) | 
+                    Q(first_name__icontains=query.split()[0], last_name__icontains=query.split()[1]) | 
+                    Q(first_name__icontains=query.split()[1], last_name__icontains=query.split()[0])
+                )
+            except (IndexError, UnboundLocalError):
+                pass
+        else:
+            query = query.strip()
+            author_results = Author.objects.filter(
+                Q(first_name__icontains=query) | Q(last_name__icontains=query)
+            )
+            
         return book_results, author_results
     
     def get_context_data(self, **kwargs):
