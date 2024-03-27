@@ -46,6 +46,10 @@ section ul {
     width: 30%;
 }
 
+.vysl-autoru ul {
+    list-style: none;
+}
+
 .logo {
     width: 50px;
 }
@@ -150,6 +154,7 @@ form .form-control.readonly:focus {
     padding-left: 0;
     grid-gap: 10px;
     width: 70%;
+    list-style: none;
 }
 
 .articles li {
@@ -262,7 +267,7 @@ small {
 }
 
 ul {
-    list-style: none;
+    /* list-style: none;*/
     padding: 0;
 }
 
@@ -434,6 +439,8 @@ h1::after {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-left: 0;
+    list-style: none;
 }
 
 .genre li {
@@ -561,6 +568,9 @@ h1::after {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 100%;
     margin: 30px auto;
+}
+.abc-authors ul {
+    list-style: none;
 }
 
 .pagination {

@@ -93,7 +93,7 @@
 <div class="genre">
     <h1>Seznam žánrů</h1>
     <div style="margin-top: 30px; width: 100%;">
-        <ul style="padding-left:0;">
+        <ul>
             {% for genre in genres %}
             <li>
                 <a href="{% url 'zanr' genre.slug %}"><i class="{{ genre.icon }}"></i> {{ genre }} ({{ genre.book_set.count }})</a>
