@@ -12,6 +12,10 @@
     Upravit profil
 </h1>
 <div class="form-group upravit-profil">
+    <label for="">O mně:</label>
+    <p>
+        {{ user.profile.bio }}
+    </p>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}

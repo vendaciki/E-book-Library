@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ profile.user }} | Profil
+{% endblock %}
+{% block content %}
+<h1>Uživatelský profil</h1>
+<h2>{{ profile.user }}</h2>
+<div>
+    <img src="{{ profile.profile_pic.url }}" alt="{{ profile.user }}" width=200 height=200>
+    <p>{{profile.bio }}</p>
+    <p>Členem od: {{ profile.user.date_joined }}</p>
+    {% if user.is_authenticated %}
+        <p>
+            <a href="{% url 'upravit-profil' %}">Upravit profil</a>
+        </p>
+    {% endif %}
+
+</div>
+{% endblock %}

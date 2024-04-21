@@ -184,6 +184,10 @@ form .form-control.readonly:focus {
     width: 100%;
 }
 
+.article-detail img {
+    width: 100%;
+}
+
 small {
     width: 100%;
 }

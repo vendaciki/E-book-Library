@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UserRegisterView, UserEditView, UserLoginView, PasswordsChangeView, redirect_view
+from .views import UserRegisterView, UserEditView, UserLoginView, PasswordsChangeView, redirect_view, ShowUserProfileView
 # from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -8,5 +8,6 @@ urlpatterns = [
     path("upravit-profil/", UserEditView.as_view(), name="upravit-profil"),
     path("password/", PasswordsChangeView.as_view(), name="password"),
     path("uspesne-zmeneno/", redirect_view, name="uspesne-zmeneno"),
+    path("uzivatel-<slug:slug>/", ShowUserProfileView.as_view(), name="profil")
   
 ]
