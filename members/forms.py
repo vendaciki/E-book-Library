@@ -4,6 +4,7 @@ from django import forms
 from django.utils.safestring import mark_safe
 from django.core.exceptions import ValidationError
 from django.forms.widgets import DateInput
+from .models import Profile
 
 
 class SignUpForm(UserCreationForm):
@@ -46,6 +47,17 @@ class LoginForm(AuthenticationForm):
      }
 
 
+class AddonProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ("bio", "profile_pic")
+    
+    def __init__(self, *args, **kwargs):
+        super(AddonProfileForm, self).__init__(*args, **kwargs)
+
+        self.fields["bio"].widget.attrs["class"] = "form-control"
+
+
 class EditProfileForm(UserChangeForm):
     email = forms.EmailField(label="E-mail", widget=forms.EmailInput(attrs={"class":"form-control"}))
     first_name = forms.CharField(max_length=100, required=False, label="Křestní jméno (volitelné)", widget=forms.TextInput(attrs={"class":"form-control"}))
@@ -61,6 +73,7 @@ class EditProfileForm(UserChangeForm):
     #     help_text=mark_safe("Hesla se neukládají přímo a tak je nelze zobrazit. <br /> Heslo můžeš změnit pomocí <a href='../password'>tohoto formuláře</a>."),
     #     widget=forms.TextInput(attrs={"class":"form-control readonly", "readonly":True})
     #     )
+
 
     class Meta:
         model = User

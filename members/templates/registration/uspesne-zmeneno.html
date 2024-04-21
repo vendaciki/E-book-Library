@@ -10,7 +10,7 @@
 <script>
     function redirectHome() {
         setTimeout(function() {
-            window.location.href = "{% url 'home' %}";
+            window.location.href = "{% url 'profil' user.profile.slug %}";
         }, 2000);
     }
 

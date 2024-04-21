@@ -57,8 +57,12 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             {% comment %} <a href="{% url 'upravit-profil' %}" class="nav-link">Upravit profil</a> {% endcomment %}
-                            {% comment %} <img src="media/{{ user.profile.profile_pic }}" alt="" width=30 height=30> {% endcomment %}
-                            <a href="{% url 'profil' user.profile.slug  %}" class="nav-link">{{ user.username }}</a>
+                            
+                            <a href="{% url 'profil' user.profile.slug  %}" class="nav-link">
+                                <img src="../../media/{{ user.profile.profile_pic }}" alt="" width=30 height=30 style="position:absolute">
+                                <p>{{ user.username }}</p>
+
+                            </a>
                         </li>
                         <li class="nav-item">
                             <!-- bezpečnostní ověření při odhlášení, bez něj to nefunguje -->

@@ -18,7 +18,8 @@
     </p>
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ addons_form.as_p }}
+        {{ edit_form.as_p }}
         <p>
             <label>Heslo:</label>
             <input type="text" value="skryto" class="form-control readonly" maxlength="100" readonly>
