@@ -2,6 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 
+# class Avatar(models.Model):
+#     image = models.ImageField(upload_to="images/profile")
+#     name = models.CharField(max_length=100)
+
+#     def __str__(self):
+#         return str(self.name)
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
