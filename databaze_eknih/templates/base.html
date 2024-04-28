@@ -55,14 +55,13 @@
                     <!-- Začíná podmínka: pokud je user přihlášen, zviditelni: -->
                     {% if user.is_authenticated %}
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item avatar">
+                            <img src="../../media/{{ user.profile.profile_pic }}" alt="avatar">
+                        </li>
                         <li class="nav-item">
                             {% comment %} <a href="{% url 'upravit-profil' %}" class="nav-link">Upravit profil</a> {% endcomment %}
                             
-                            <a href="{% url 'profil' user.profile.slug  %}" class="nav-link">
-                                <img src="../../media/{{ user.profile.profile_pic }}" alt="" width=30 height=30 style="position:absolute">
-                                <p>{{ user.username }}</p>
-
-                            </a>
+                            <a href="{% url 'profil' user.profile.slug  %}" class="nav-link">{{ user.username }}</a>
                         </li>
                         <li class="nav-item">
                             <!-- bezpečnostní ověření při odhlášení, bez něj to nefunguje -->

@@ -11,7 +11,7 @@
     <p>Členem od: {{ profile.user.date_joined }}</p>
     {% if user.is_authenticated %}
         <p>
-            <a href="{% url 'upravit-profil' %}">Upravit profil</a>
+            <a href="{% url 'upravit-profil' %}" class="btn btn-primary">Upravit profil</a>
         </p>
     {% endif %}
 
