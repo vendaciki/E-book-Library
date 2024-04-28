@@ -1,7 +1,7 @@
 # Home-eBook-Library
 This is Django based project for home usage only. It allows family members to save their eBooks on local server and make its own eBook database.
 
-# CZ manual k instalaci a spuštění Djanga
+# CZ manual k instalaci a spuštění Djangagit pull origin master
 1. Otevři si příkazovou řádku klávesovou zkratkou Win+R a vepiš příkaz
 ```cmd```
 Pomocí příkazů 
