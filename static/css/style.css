@@ -289,6 +289,10 @@ ul {
     padding: 0;
 }
 
+.pridat-btn, .books, .genre, .authors {
+    background-color: #e9f1fd;
+}
+
 .pridat-btn {
     display: flex;
     flex-wrap: wrap;
@@ -467,6 +471,7 @@ h1::after {
     border-radius: 8%;
     margin: 10px;
     flex: 0 0 auto;
+    background-color: white;
 }
 
 .genre a {

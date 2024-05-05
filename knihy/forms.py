@@ -43,7 +43,7 @@ class PostBookForm(forms.ModelForm):
         labels = {
             'title': 'Název',
             'genre': 'Žánr',
-            'publication_date': 'Datum vydání',
+            'publication_date': 'Rok vydání',
             'ISBN': 'ISBN',
             'summary': 'Souhrn',
             'cover_image': 'Obrázek obalu',
