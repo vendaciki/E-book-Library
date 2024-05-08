@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import BooksView, AddBookView, BookDetailView, UpdateBookDetail, SearchView, AddAuthorView, AuthorDetailView, AllBooksView, AllAuthorsView, GenreDetailView
-from .views import AuthorsByCharView, BooksByCharView ,DeleteBookDetailView, AuthorAutocompleteView, DownloadEpubView
+from .views import AuthorsByCharView, BooksByCharView ,DeleteBookDetailView, AuthorAutocompleteView, DownloadEpubView, AddPublisherView, PublisherAutocompleteView
 
 urlpatterns = [
     path("", BooksView.as_view(), name="home"),
@@ -10,6 +10,7 @@ urlpatterns = [
     path("smazat-knihu/<slug:slug>", DeleteBookDetailView.as_view(), name="smazat-knihu"),
     path("vysledky-hledani", SearchView.as_view(), name="vysledky-hledani"),
     path("pridat-autora", AddAuthorView.as_view(), name="pridat-autora"),
+    path("pridat-nakladatelstvi", AddPublisherView.as_view(), name="pridat-nakladatelstvi"),
     path("detail-autora/<slug:slug>", AuthorDetailView.as_view(), name="detail-autora"),
     path("vsechny-knihy/", AllBooksView.as_view(), name="vsechny-knihy"),
     path("vsichni-autori/", AllAuthorsView.as_view(), name="vsichni-autori"),
@@ -17,6 +18,7 @@ urlpatterns = [
     path("knihy-abecedne-<str:char>", BooksByCharView.as_view(), name="vsechny-knihy-abecedne"),
     path("zanr-<slug:slug>", GenreDetailView.as_view(), name="zanr"),
     path("author-autocomplete/", AuthorAutocompleteView.as_view(), name="author-autocomplete"),
+    path("publisher-autocomplete/", PublisherAutocompleteView.as_view(), name="publisher-autocomplete"),
     path("stahnout-knihu/<slug:slug>", DownloadEpubView.as_view(), name="stahnout-knihu"),
     ]
 
