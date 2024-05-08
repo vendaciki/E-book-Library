@@ -1,5 +1,5 @@
 from django import forms
-from .models import Book, Author, Genre
+from .models import Book, Author, Genre, Publisher
 from django.core.exceptions import ValidationError
 
 
@@ -12,6 +12,8 @@ class PostBookForm(forms.ModelForm):
     
     author_search = forms.CharField(label='Autor', widget=forms.TextInput(attrs={"class": "form-control shadow-sm", "placeholder": "Zadej příjmení..."}))
     # epub_file = forms.ClearableFileInput(attrs={'class': 'form-control-file'})
+    publisher_search = forms.CharField(label='Nakladatelství', widget=forms.TextInput(attrs={"class": "form-control shadow-sm", "placeholder": "Zadej název..."}))
+    
 
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request', None)
@@ -24,7 +26,7 @@ class PostBookForm(forms.ModelForm):
 
     class Meta:
         model = Book
-        fields = ("title", "author_search", "author", "genre", "publication_date", "ISBN", "summary", "cover_image", "epub_file")
+        fields = ("title", "author_search", "author", "genre", "publication_date", "publisher_search", "publisher", "ISBN", "summary", "cover_image", "epub_file")
     
     # přidávám class, se kterou pracuji v CSS; stejně tak můžu přidat jakýkoliv jiný parametr
         widgets = {
@@ -34,6 +36,7 @@ class PostBookForm(forms.ModelForm):
                 'genre': forms.CheckboxSelectMultiple(attrs={'class': 'list-unstyled'}),
                 # 'genre': forms.SelectMultiple(),
                 'publication_date': forms.DateInput(attrs={'class': 'form-control datepicker shadow-sm'}),
+                'publisher': forms.HiddenInput(),
                 'ISBN': forms.TextInput(attrs={'class': 'form-control shadow-sm'}),
                 'summary': forms.Textarea(attrs={'class': 'form-control shadow-sm', 'rows': 4}),
                 'cover_image': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
@@ -44,6 +47,7 @@ class PostBookForm(forms.ModelForm):
             'title': 'Název',
             'genre': 'Žánr',
             'publication_date': 'Rok vydání',
+            'publisher': 'Nakladatelství',
             'ISBN': 'ISBN',
             'summary': 'Souhrn',
             'cover_image': 'Obrázek obalu',
@@ -74,3 +78,19 @@ class PostAuthorForm(forms.ModelForm):
     def clean_last_name(self):
         # Capitalize the first letter of the last name
         return self.cleaned_data['last_name'].capitalize()
+
+
+class PostPublisherForm(forms.ModelForm):
+    class Meta:
+        model = Publisher
+        fields = ("name",)
+
+        widgets = {
+                'name': forms.TextInput(attrs={'class': 'form-control shadow-sm'}),
+             }
+        labels = {
+            "name": "Nakladatelství",
+        }
+    
+    def clean_name(self):
+        return self.cleaned_data["name"].capitalize()

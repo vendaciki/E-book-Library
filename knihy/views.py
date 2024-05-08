@@ -1,8 +1,8 @@
 from typing import Any
 from django.db.models.query import QuerySet
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, View
-from .models import Book, Author, Genre
-from .forms import PostBookForm, PostAuthorForm
+from .models import Book, Author, Genre, Publisher
+from .forms import PostBookForm, PostAuthorForm, PostPublisherForm
 from django.urls import reverse_lazy
 from utils.google_books import get_review
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -46,7 +46,33 @@ class AddBookView(CreateView):
         # Dynamically generate the success URL using self.object.id
         return reverse_lazy("detail-knihy", kwargs={'slug': self.object.slug})
         # success_url = reverse_lazy("knihy")
-    
+
+
+class AddPublisherView(CreateView):
+    model = Publisher
+    form_class = PostPublisherForm
+    template_name = "pridat-nakladatelstvi.html"
+
+    success_url = reverse_lazy("home")
+
+    def form_valid(self, form):
+        publisher = form.cleaned_data['name']
+
+        existing_publisher = Publisher.objects.filter(name=publisher).first()
+
+        if existing_publisher:
+            return render(self.request, self.template_name, {'form': form, 'error_message': 'Nakladatelství už existuje.'})
+        else:
+            return super().form_valid(form)
+
+
+class PublisherAutocompleteView(View):
+    def get(self, request, *args, **kwargs):
+        query = self.request.GET.get("q")
+        qs = Publisher.objects.filter(name__istartswith=query)[:20]
+        publishers = [{'id': publisher.id, 'label': f"{publisher.name}", "value": f"{publisher.name}"} for publisher in qs]
+        return JsonResponse(publishers, safe=False)    
+
 
 class AuthorAutocompleteView(View):
     def get(self, request, *args, **kwargs):

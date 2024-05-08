@@ -42,6 +42,16 @@ class Genre(models.Model):
     class Meta:
         ordering = ["genre"]
 
+class Publisher(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(default="", null=False, db_index=True)
+
+    def __str__(self):
+        return self.name
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 class Book(models.Model):
     title = models.CharField(max_length=255)
@@ -49,6 +59,7 @@ class Book(models.Model):
     # genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, null=True, blank=True)
     genre = models.ManyToManyField(Genre)
     publication_date = models.CharField(max_length=4)
+    publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE, null=True, blank=True)
     ISBN = models.CharField(max_length=17, unique=True)
     summary = models.TextField()
     cover_image = models.ImageField(upload_to="book_covers/", null=True, blank=True)

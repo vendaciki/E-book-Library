@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+Přidat nakladatelství
+{% endblock %}
+
+{% block content %}
+
+<h1>Přidat nakladatelství</h1>
+<div class="form-group">
+    <form method="post" action="{% url 'pridat-nakladatelstvi' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">Přidat</button>
+    </form>
+    
+</div>
+
+
+{% endblock %}
