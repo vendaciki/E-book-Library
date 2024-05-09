@@ -47,6 +47,32 @@
                     }
                 });
             } );
+            $( function() {
+                $( "#id_publisher_search" ).autocomplete({
+                    minLength: 1,
+                    source: function(request, response) {
+                        $.ajax({
+                            url: "{% url 'publisher-autocomplete' %}",
+                            dataType: "json",
+                            data: {
+                                q: request.term
+                            },
+                            success: function(data) {
+                                response(data);
+                            }
+                        });
+                    },
+                    select: function (event, ui) {
+                        // Set the displayed text to the author's last name
+                        $("#id_publisher").val(ui.item.id);
+                        
+                        // Set the actual value to the author's ID
+                        $("#id_publisher_search").val(ui.item.label);
+    
+                        return false; // Prevent the default behavior
+                    }
+                });
+            } );
         </script>
 
         <button type="submit" class="btn btn-primary">Uložit</button>
