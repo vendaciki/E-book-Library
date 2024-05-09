@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm, UsernameField, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm
 from django.contrib.auth.models import User
 from django import forms
 from django.utils.safestring import mark_safe
@@ -114,5 +114,20 @@ class PasswordsChangeForm(PasswordChangeForm):
         super(PasswordsChangeForm, self).__init__(*args, **kwargs)
 
         self.fields["old_password"].widget.attrs["class"] = "form-control"
+        self.fields["new_password1"].widget.attrs["class"] = "form-control"
+        self.fields["new_password2"].widget.attrs["class"] = "form-control"
+
+
+
+class CustomPasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(label="E-mail", widget=forms.EmailInput(attrs={"class":"form-control"}))
+
+
+#TODO toto nefunguje - nepridava class="form-control"
+
+class ResetPasswordForm(SetPasswordForm):
+    def __init__(self, *args, **kwargs):
+        super(ResetPasswordForm, self).__init__(*args, **kwargs)
+
         self.fields["new_password1"].widget.attrs["class"] = "form-control"
         self.fields["new_password2"].widget.attrs["class"] = "form-control"

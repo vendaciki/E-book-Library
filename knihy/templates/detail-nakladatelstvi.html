@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ publisher.name }}
+{% endblock %}
+
+{% block content %}
+
+
+<h1>{{ publisher.name }}</h1>
+<h2 style="margin-top: 20px;">Knihy  ({{ publisher.book_set.count }})</h2>
+<div class="author-books">
+    <ul class="author-books-list">
+        {% for book in publisher.book_set.all %}
+        <li class="ten-books">
+            <a href="{% url 'detail-knihy' book.slug %}">
+                {% if book.cover_image %}
+                <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+                {% else %}
+                <img src="{% static 'images/empty_cover.webp' %}" style="border-radius: 15px 0 0 15px;" alt="Prázdný obal">
+                {% endif %}
+            </a>
+            <p style="margin-top: 20px; width: 100%" class="prehled-knih fw-medium"> {{ book.title }} <br> ({{ book.publication_date }})</p>
+        </li>
+        {% empty %}
+            <p>Žádné knihy nejsou dostupné.</p>
+        {% endfor %}
+    </ul>
+</div>
+
+
+{% endblock %}

@@ -104,7 +104,8 @@ class DownloadEpubView(View):
     def get(self, request, slug):
         book = get_object_or_404(Book, slug=slug)
         original_file_name = book.epub_file.name
-        response = HttpResponse(book.epub_file.read(), content_type='application/epub+zip')
+        content_type = "application/epub+zip" if original_file_name.endswith(".epub") else "application/pdf"
+        response = HttpResponse(book.epub_file.read(), content_type=content_type)
         response['Content-Disposition'] = f'attachment; filename={original_file_name}'
         return response
 
@@ -226,6 +227,11 @@ class AddAuthorView(CreateView):
 class AuthorDetailView(DetailView):
     model = Author
     template_name = "detail-autora.html"
+
+
+class PublisherDetailView(DetailView):
+    model = Publisher
+    template_name = "detail-nakladatelstvi.html"
 
 
 class AllBooksView(ListView):

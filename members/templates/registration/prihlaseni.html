@@ -15,6 +15,10 @@
         <!-- kolonky se modifikují v souboru forms.py, kde je jim udělena třída class="form-control" -->    
         {{ form.as_p }}
         <button class="btn btn-primary">Přihlásit</button>
+        <p>
+            Zapomněl jsi heslo? <br>
+            <a href="{% url 'password_reset' %}">Obnovit zde.</a>
+        </p>
 </div>
 
 {% comment %} <script>

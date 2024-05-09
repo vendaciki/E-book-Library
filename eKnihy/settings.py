@@ -62,7 +62,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR /  "eKnihy" /"templates"
+            BASE_DIR /  "eKnihy" /"templates",
+            BASE_DIR / "members" / "templates",
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -71,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'databaze_eknih.context_processors.books_count',
             ],
         },
     },
@@ -148,3 +150,10 @@ LOGOUT_REDIRECT_URL = "home"
 # media soubory
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / 'uploads'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'mar6wen8@gmail.com'  # Your Gmail email address
+EMAIL_HOST_PASSWORD = 'gfjg qusa mwsj zznj'  # Your Gmail app password

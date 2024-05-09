@@ -65,7 +65,7 @@ class Book(models.Model):
     cover_image = models.ImageField(upload_to="book_covers/", null=True, blank=True)
     slug = models.SlugField(default="", null=False, db_index=True) # Harry Potter 1 => harry-potter-1
     hodnoceni = models.IntegerField(null=True, blank=True, default=0)
-    epub_file = models.FileField(upload_to="epub_files/", null=True, blank=True, validators=[FileExtensionValidator(['epub'])])
+    epub_file = models.FileField(upload_to="epub_files/", null=True, blank=True, validators=[FileExtensionValidator(['epub', 'pdf'])], error_messages="Pouze formát EPUB nebo PDF.")
     
 
     def __str__(self):

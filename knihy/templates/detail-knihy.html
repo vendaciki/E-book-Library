@@ -43,12 +43,18 @@
                         {% endfor %}
                     </p>
                     <p><strong>Rok vydání:</strong> {{ book.publication_date }}</p>
-                    <p><strong>Nakladatelství:</strong> {{ book.publisher }}</p>
+                    <p><strong>Nakladatelství:</strong> 
+                        {% if book.publisher %}
+                        <a href="{% url 'detail-nakladatelstvi' book.publisher.slug %}">{{ book.publisher }}</a>
+                        {% else %}
+                        {{ book.publisher }}
+                        {% endif %}
+                    </p>
                     <p><strong>ISBN:</strong> {{book.ISBN }}</p>
                 </div>
                 {% if book.epub_file and user.is_staff%}
                 <div style="width: 100%;">
-                    <a href="{% url 'stahnout-knihu' book.slug %}"><button type="button" class="btn btn-primary">Stáhnout ePub</button></a> 
+                    <a href="{% url 'stahnout-knihu' book.slug %}"><button type="button" class="btn btn-primary">Stáhnout</button></a> 
                 </div>
                 {% endif %}
             </div>
