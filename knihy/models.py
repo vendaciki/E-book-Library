@@ -21,7 +21,6 @@ class Author(models.Model):
         self.slug = slugify(f"{self.first_name} {self.last_name}")
         super().save(*args, **kwargs)
     
-
     class Meta:
         ordering = ["last_name"]
 
@@ -38,7 +37,6 @@ class Genre(models.Model):
         self.slug = slugify(self.genre)
         super().save(*args, **kwargs)
     
-
     class Meta:
         ordering = ["genre"]
 
@@ -67,7 +65,6 @@ class Book(models.Model):
     hodnoceni = models.IntegerField(null=True, blank=True, default=0)
     epub_file = models.FileField(upload_to="epub_files/", null=True, blank=True, validators=[FileExtensionValidator(['epub', 'pdf'])], error_messages="Pouze formát EPUB nebo PDF.")
     
-
     def __str__(self):
         return self.title
 

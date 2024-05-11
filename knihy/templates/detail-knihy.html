@@ -9,7 +9,7 @@
 
 <div class="name-book">
     <h1>{{ book.title }}</h1>
-    <div>
+    <div class="upravit-smazat">
         {% if user.is_authenticated %}
             <a href="{% url 'upravit-knihu' book.slug %}">Upravit knihu</a>
         {% endif %}
@@ -23,19 +23,13 @@
     <div class="obsah-knih">
         <div style="display: flex; flex-wrap: wrap;">
             {% if book.cover_image %}
-                <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+            <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
             {% else %}
             <img src="{% static 'images/empty_cover.webp' %}" style="border-radius: 15px 0 0 15px;" alt="Prázdný obal">
             {% endif %}
-
         
             <div class="info-knih">
                 <div>
-                    {% comment %} {% if not book.hodnoceni %}
-                        <p>Hodnocení: {{ average_rating }}</p>
-                    {% else %}
-                        <p>Hodnocení: {{ book.hodnoceni }}</p>
-                    {% endif %} {% endcomment %}
                     <p><strong>Napsal:</strong> <a class="fs-5" style="text-decoration: none;" href="{% url 'detail-autora' book.author.slug %}">{{ book.author }}</a></p>
                     <p><strong>Žánry:</strong>
                         {% for genre in book.genre.all %}
@@ -61,12 +55,10 @@
         </div>
 
         <div class="hodnoceni">
-            <p> <strong>Hodnocení:</strong> {{ book.hodnoceni }} %</p>
             <div class="star-rating" data-rating="{{ book.hodnoceni}}">
                 <script>
                     var rating = {{ book.hodnoceni }};
                     var starsContainer = document.querySelector('.star-rating');
-        
                     var filledStars = Math.round((rating / 100) * 5);
         
                     for (var i = 0; i < filledStars; i++) {
@@ -84,8 +76,8 @@
                     }
                 </script>
             </div>
+            <p> {{ book.hodnoceni }} %</p>
         </div>
-
     </div>
 
     <div>

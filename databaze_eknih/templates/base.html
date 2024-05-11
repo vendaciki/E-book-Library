@@ -36,17 +36,15 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    <ul class="navbar-nav mb-lg-0">
-                        <li class="nav-item">
+                    <ul class="nav mb-lg-0">
+                        <li class="nav-item" style="width: 100%;">
                             <form class="d-flex" role="search" action="{% url 'vysledky-hledani' %}" method="get">
                                 <input class="control" type="type" placeholder="Hledat knihu, autora" aria-label="Search" name="q">
                                 <button class="search" type="submit">Hledat</button>
                             </form>
                         </li>
                     </ul>
-
-                    <ul class="navbar-nav mb-2 mb-lg-0">
+                    <ul class="nav mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{% url "clanky" %}">Články</a>
                         </li>
@@ -54,15 +52,15 @@
 
                     <!-- Začíná podmínka: pokud je user přihlášen, zviditelni: -->
                     {% if user.is_authenticated %}
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item avatar">
-                            <img src="../../media/{{ user.profile.profile_pic }}" alt="avatar">
-                        </li>
-                        <li class="nav-item">
-                            {% comment %} <a href="{% url 'upravit-profil' %}" class="nav-link">Upravit profil</a> {% endcomment %}
-                            
-                            <a href="{% url 'profil' user.profile.slug  %}" class="nav-link">{{ user.username }}</a>
-                        </li>
+                    <ul class="nav login ms-auto mb-2 mb-lg-0">
+                        <ul style="display: flex; padding-left: 10px;">
+                            <li class="nav-item avatar">
+                                <img src="../../media/{{ user.profile.profile_pic }}" alt="avatar">
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'profil' user.profile.slug  %}" class="nav-link">{{ user.username }}</a>
+                            </li>
+                        </ul>
                         <li class="nav-item">
                             <!-- bezpečnostní ověření při odhlášení, bez něj to nefunguje -->
                             <form method="post" action="{% url 'logout' %}">
@@ -74,14 +72,13 @@
 
                     <!-- pokud user není přihlášen, tak mu ukaž tohle: -->
                     {% else %}
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <ul class="nav login ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{% url "prihlaseni" %}">Přihlásit</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{% url "registrace" %}">Registrace</a>
                         </li>
-                    <!-- konec podmínky -->
                     {% endif %}
                     </ul>
                 </div>
@@ -97,18 +94,24 @@
         </div>
 
         <footer id="footer">
-            <p>V databázi máme {{ books_count }} eknih.</p>
-            <p class="copyright">&copy; <a href="https://mar6wen8.github.io/MarWen/">MarWen</a> 2024</p>
-            <div>
-                {% comment %} <a href="" target="_blank" aria-label="FaceBook"><i class="fab fa-facebook-f"></i></a>
-                <a href="" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> {% endcomment %}
-                <a href="mailto:mar6wen8@gmail.com" target="_blank" aria-label="e-mail"><i class="fa fa-envelope"></i></a>
+            <ul>
+                <li>V databázi máme {{ books_count }} eknih.</li>
+                <li><a href="">Nakladatelství</a></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div style="display: flex; flex-wrap: wrap;">
+                <p class="copyright">&copy; <a href="https://mar6wen8.github.io/MarWen/">MarWen</a> 2024</p>
+                <div>
+                    {% comment %} <a href="" target="_blank" aria-label="FaceBook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> {% endcomment %}
+                    <a href="mailto:mar6wen8@gmail.com" target="_blank" aria-label="e-mail"><i class="fa fa-envelope"></i></a>
+                </div>
             </div>
         </footer>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-
     </body>
-
 </html>

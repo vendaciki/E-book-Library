@@ -241,20 +241,21 @@ small {
     margin-top: 20px;
     font-size: 25px;
     flex-wrap: wrap;
-    width: 25%;
     align-content: flex-start;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .hodnoceni p {
     margin-bottom: auto;
     border-radius: 10px;
     box-shadow: 0px 0px 5px #6253da;
-    padding: 10px 20px;
+    padding: 0px 20px;
+    background-color: #e3e0ff;
 }
 
 .star-rating {
     font-size: 30px;
+    margin-right: 10px;
 }
   
 .star {
@@ -280,6 +281,19 @@ small {
     margin-left: 20px;
 }
 
+.nav {
+    --bs-nav-link-padding-x: 0;
+    --bs-nav-link-padding-y: 0.5rem;
+    --bs-nav-link-font-weight: ;
+    --bs-nav-link-color: var(--bs-navbar-color);
+    --bs-nav-link-hover-color: var(--bs-navbar-hover-color);
+    --bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);
+    display: flex;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
 .ms-auto {
     margin-right: 20px;
 }
@@ -287,6 +301,10 @@ small {
 ul {
     /* list-style: none;*/
     padding: 0;
+}
+
+ul ul {
+    list-style: none;
 }
 
 .pridat-btn, .books, .genre, .authors {
@@ -410,7 +428,7 @@ h1::after {
 }
 
 .authors, .books, .genre, .genre li, .articles li, .hodnoceni p, .pridat-btn {
-    border: 1px solid #9387f5;
+    border: 1px solid #9387f5; 
     box-shadow: 0px 0px 5px 0px #6253da;
 }
 
@@ -612,15 +630,13 @@ h1::after {
 
 
 
-
-
 /***************************************/
 /*                FOOTER               */
 /***************************************/
 
 footer {
     display: flex;
-    padding: 10px;
+    padding: 20px;
     justify-content: space-between;
     background-color: #f5f6f7;
     z-index: 10;
@@ -632,11 +648,8 @@ footer {
 #footer .copyright {
     color: #9fa3a6;
     font-size: 15px; 
-    margin: auto 20px;
-    left: 50%;
     position: relative;
 }
-
 
 
 
@@ -698,7 +711,7 @@ footer {
         background-image: none;
     }
 
-    .all-books ul {
+    .all-books ul, .author-books ul {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 
@@ -730,15 +743,12 @@ footer {
         flex: 0 0 calc(20% - 10px);
     }
 
-    .all-books ul {
+    .all-books ul, .author-books ul {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-}
 
-@media screen and (max-width: 700px) {
-
-    .author-books {
-        flex: 0 0 calc(25% - 10px);
+    .ten-books p {
+        font-size: 12px;
     }
 }
 
@@ -749,16 +759,18 @@ footer {
     }
 }
 
+@media screen and (max-width: 540px) {
+    
+    .zanr, .all-books ul, .author-books ul {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 @media screen and (max-width: 500px) {
 
     .author-books {
         flex: 0 0 calc(50% - 10px);
     }
-
-    .zanr {
-        grid-template-columns: 1fr 1fr;
-    }
-
 }
 
 
@@ -783,8 +795,12 @@ footer {
     }
 
     .fab, .fa {
-        margin: 10px;
         font-size: 20px;
+    }
+
+    #footer {
+        flex-direction: column;
+        justify-content: flex-start;
     }
 
     #footer .copyright {
@@ -803,7 +819,7 @@ footer {
         font-size: 12px;
     }
 
-    .navbar-nav {
+    .nav {
         margin: 15px auto;
     }
     
@@ -842,10 +858,70 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .hodnoceni {
+        font-size: 20px;
+        justify-content: center;
+        margin-left: 200px;
+        align-content: flex-end;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
 
+    .hodnoceni p {
+        border: none; 
+    }
 
+    .upravit-smazat {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        width: 40%;
+        font-size: 12px;
+    }
 
+    .obsah-knih {
+        flex-direction: column-reverse;
+    }
 
+    .star-rating {
+        font-size: 25px;
+    }
+
+    .kniha img {
+        margin-top: -80px;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .nav, .login {
+        justify-content: space-between;
+    }
+
+    .login::before {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: #ffffff;
+        margin-bottom: 15px;
+    }
+
+    .avatar {
+        margin: 0;
+    }
+
+    .upravit-profil .form-control, .zmenit-heslo .form-control  {
+        width: 100%;
+    }
+
+    .author-books {
+        flex: 0 0 calc(25% - 10px);
+    }
 
 
 }
