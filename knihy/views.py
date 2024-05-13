@@ -90,7 +90,7 @@ class BookDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         
         # Fetch reviews using the utility function
-        average_rating, ratings_count = get_review(self.object.title, "AIzaSyA36DPoAS-veBCYv-gvPvuwuXsn4CfTyUI")
+        average_rating, ratings_count = get_review(self.object.title, "key")
         
 
         # Add review data to the context
