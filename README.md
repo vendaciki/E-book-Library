@@ -2,7 +2,7 @@
 _This is Django based project under construction._
 
 # About 
-Django based project that serves as home e-book library. It is hosted on PythonAnywhere on [mwknihovna.pythonanywhere.com](https://mwknihovna.pythonanywhere.com) so that any visitor can browse our e-book library content. <br>
+Django based project that serves as home e-book library. It is hosted on PythonAnywhere on <a href="https://mwknihovna.pythonanywhere.com" target="_blank">mwknihovna.pythonanywhere.com</a> so that any visitor can browse our e-book library content. <br>
 ![image](https://github.com/xSilence8x/E-book-Library/assets/50072173/4b3cc390-defb-4283-9daf-cd12160fee9a)
 
 ## Key Points
